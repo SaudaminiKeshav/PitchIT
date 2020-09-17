@@ -1,0 +1,23 @@
+PitchIT - Project #2
+
+Developers: Juliana Andrews, Corey Burkett, Damini Keshav, Armando Osorio
+
+
+Main Concept: 
+This application will allow users to plan out their future camping adventures! From logging the group members to listing out required items, this app will serve as a place for users to track their trips as well as rate their hikes once complete.
+
+Key Features (MVP):
+Pick from various campsites/hiking trails (dataset)
+Profile creation 
+Create / update trip
+Search for campsites 
+List out camping supplies for each trip 
+List the people attending the trip
+Post trip on their profile page
+Check the trip as complete and provide a review / rating
+
+
+Bonus Features: 
+Send invite email for other group members on the trip. 
+Air quality checker for trip location
+Badge / Milestones for number of trips or mileage hiked (use lottie animation for badges)

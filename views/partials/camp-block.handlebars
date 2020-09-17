@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    {{trip_name}}
+    {{#if created-trip}}
+
+    	<button class="update-trip" data-id="{{id}}" data-updateTrip="{{trip}}">
+			Update Trip
+		</button>
+    {{/if}}
+    
+	<button class="delete-trip" data-id="{{this.id}}">Delete</button>
+  </div>
+</div>

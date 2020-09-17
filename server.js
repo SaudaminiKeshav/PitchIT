@@ -8,7 +8,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./routes/html-routes.js")(app);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+var routes = require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
 

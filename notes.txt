@@ -1,0 +1,9 @@
+pitchdb
+
+Tables:
+
+Users:
+Username, Password, Email
+
+Saved Trips:
+Camp site, date, people, supplies

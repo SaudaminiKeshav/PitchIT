@@ -1,7 +1,15 @@
 
-$(document).ready(function () {
 
-  $("#formcontainer").delay(800).fadeIn;
+$(document).ready(function () {
+  $("#formcontainer").toggleClass("hideForm");
+  $("body").toggleClass("blueBg");
+  setTimeout(function(){
+    $("body").toggleClass("removeBgColor");
+    $("#formcontainer").fadeIn(2000);
+    $("#loadingSpinner").toggleClass("hideForm")
+   
+  }, 3000); 
+
 
   // Getting references to our form and input
   var signUpForm = $("form.signup");

@@ -1,4 +1,8 @@
+
 $(document).ready(function () {
+
+  $("#formcontainer").delay(800).fadeIn;
+
   // Getting references to our form and input
   var signUpForm = $("form.signup");
   var nameInput = $("input#name-input");

@@ -22,25 +22,27 @@
                 <h2>Sign Up Form</h2>
                 <form class="signup">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="email" class="form-control" id="email-input" placeholder="Name">
+                        <label  for="name-input">Name</label>
+                        <input type= text class="form-control" id="name-input" placeholder="Name" aria-describedby="inputGroupPrepend2" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Phone number</label>
-                        <input type="email" class="form-control" id="email-input" placeholder="Phone number">
+                        <label  for="validationDefault02">Phone number</label>
+                        <input class="form-control" id="number-input" placeholder="Phone number" aria-describedby="inputGroupPrepend2" required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email-input" placeholder="Email">
+                        <label for="validationDefault03">Email address</label>
+                        <input type="email" class="form-control" id="email-input" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password-input" placeholder="Password">
+                        <input type="password" class="form-control" id="password-input" placeholder="Password" aria-describedby="inputGroupPrepend2" required>
                     </div>
+
                     <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span> <span class="msg"></span>
                     </div>
+
                     <button type="submit" class="btn btn-default">Sign Up</button>
                 </form>
                 <br />

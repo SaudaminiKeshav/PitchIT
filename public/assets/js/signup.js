@@ -20,7 +20,7 @@ $(document).ready(function () {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
+    signUpUser(userData.name, userData.number, userData.email, userData.password);
     nameInput.val("");
     phoneNumberInput.val("");
     emailInput.val("");
@@ -31,6 +31,8 @@ $(document).ready(function () {
   // Otherwise we log any errors
   function signUpUser(email, password) {
     $.post("/api/signup", {
+      name: name,
+      number: number,
       email: email,
       password: password
     })
@@ -42,4 +44,7 @@ $(document).ready(function () {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err
+    $("#alert .msg").text(err.responseJSON);
+    $("#alert").fadeIn(500);
+  }
+});

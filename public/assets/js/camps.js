@@ -6,9 +6,10 @@ $(function() {
     // Values to create a new trip
     var newTrip = {
       camp_site: $("#camp-site").val().trim(),
-      date: $("#date").val(),
-      people: $("#people").val(),
-      supplies: $("#supplies").val()
+      date: $("#date").val().trim(),
+      people: $("#people").val().trim(),
+      supplies: $("#supplies").val(),
+      completed: 0
     };
 
     // Post new trip
@@ -25,10 +26,10 @@ $(function() {
   // Button inside the camping trip card to update it
   $(".update-trip").on("click", function(event) {
     var id = $(this).data("id");
-    var newTrip = $(this).data("updateTrip");
+    var updateTrip = $(this).data("completed");
 
     var updateTripState = {
-      trip: newTrip
+      completed: newCompleted
     };
 
     $.ajax("/api/trips/" + id, {
@@ -36,7 +37,7 @@ $(function() {
       data: updateTripState
     }).then(
       function() {
-        console.log("changed state to", newTrip);
+        console.log("changed state to", updateTrip);
         location.reload();
       });
   });

@@ -1,14 +1,33 @@
 $(function() {
+  // button to create a new trip
+  $(".create-trip-btn").on("click", function(event) {
+    event.preventDefault();
+
+    app.get("/home", function(req, res) {
+      res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
+    });
+
+    // $.ajax("/api/create", {
+    //   type: "GET",
+    //   data:
+    // }).then(
+    //   function() {
+    //     console.log("creating new trip");
+    //     location.reload();
+    // });
+  });
+
   // This is for the submit button to pupulate the new camping trip
-  $(".submit-trip").on("submit", function(event) {
+  $(".submit-trip").on("click", function(event) {
     event.preventDefault();
 
     // Values to create a new trip
     var newTrip = {
-      camp_site: $("#camp-site").val().trim(),
+      title: $("#title").val().trim(),
+      location: $("#location").val().trim(),
       date: $("#date").val().trim(),
-      people: $("#people").val().trim(),
-      supplies: $("#supplies").val(),
+      campers: $("#campers").val().trim(),
+      items: $("#items").val(),
       completed: 0
     };
 

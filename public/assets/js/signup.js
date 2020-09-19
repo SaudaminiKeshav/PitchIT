@@ -1,4 +1,7 @@
 
+ function redirectToLoginPage(){
+  location.replace("login.html")
+}
 
 $(document).ready(function () {
   $("#formcontainer").toggleClass("hideForm");
@@ -59,4 +62,6 @@ $(document).ready(function () {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+
+ 
 });

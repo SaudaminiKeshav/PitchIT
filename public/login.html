@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="./assets/css/camp-style.css" type="text/css"/>
 </head>
 <body>
-  <form action="action_page.php" method="post">
+  <form class="login" action="action_page.php" method="post">
       <div class="imgcontainer">
         <img src="./assets/img/login-camp.png" alt="Camping Image" class="avatar">
       </div>
     
       <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="uname"><b>Email address</b></label>
+        <input type="text" placeholder="Enter email" name="uname" id="email-input" required>
     
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw"  id="password-input" required>
     
         <button type="submit">Login</button>
         <label>

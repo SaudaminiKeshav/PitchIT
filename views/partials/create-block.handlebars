@@ -1,0 +1,45 @@
+<form id="create-adventure">
+        <div>
+            <label for="title">Adventure Name:</label>
+            <input type="text" id="title">
+        </div>
+        <br>
+        <div>
+            <label for="location">Campground:</label>
+            <input list="campground-list" type="text" id="location" placeholder="search...">
+            <datalist id="campground-list">
+                <option>camp 1</option>
+                <option>camp 2</option>
+                <option>camp 3</option>
+                <option>camp 4</option>
+            </datalist>
+        </div>
+        <br>
+        <div>
+            <label for="date">Dates:</label>
+            <input type="text" id="date" placeholder="MM/DD/YYYY - MM/DD/YYYY">
+        </div>
+        <br>
+        <div>
+            <label for="campers">Additional Camper's Username:</label>
+            <input list="campers-list" type="text" id="campers">
+            <datalist id="campers-list">
+                <option>Juliana</option>
+                <option>Corey</option>
+                <option>Armando</option>
+                <option>Damini</option>
+            </datalist>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
+                <i class="material-icons">add</i>
+            </button>
+        </div>
+        <br>
+        <div class="form-group supply-list">
+            <label for="exampleFormControlTextarea1">Supply List:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect submit-trip-btn">
+            Submit
+        </button>
+    </form>

@@ -38,6 +38,7 @@ module.exports = function(app) {
         }).then(function(dbAdventure) {
             res.json(dbAdventure);
         })
+
     });
 
     app.delete("/api/adventures/:id", function(req, res) {

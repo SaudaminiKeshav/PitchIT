@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link rel="stylesheet" href="public\assets\css\camp-style.css" type="text/css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="public\assets\css\camp-style.css" type="text/css" />
 </head>
+
 <body>
-  <form class="login" action="action_page.php" method="post">
-      <div class="imgcontainer">
-        <img src="public\assets\img\login-camp.png" alt="Camping Image" class="avatar">
-      </div>
-    
-      <div class="container">
-        <label for="uname"><b>Email address</b></label>
-        <input type="text" placeholder="Enter email" name="uname" id="email-input" required>
-    
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw"  id="password-input" required>
-    
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-    
-      <div class="container" style="background-color:#f1f1f1">
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
+  <div class="imgcontainer">
+    <img src="public\assets\img\login-camp.png" alt="Camping Image" class="avatar">
+  </div>
+  <form class="login container col-md-6 col-md-offset-3" method="post">
+   
+
+    <div class="form-group alignContent">
+      <label for="uname"><b>Email address </b></label>
+      <input type="text" placeholder="Enter email" name="uname" id="email-input" required>
+    </div>
+
+    <div class="form-group alignContent">
+      <label for="psw"><b>Password </b></label>
+      <input  type="password" placeholder="Enter Password" name="psw" id="password-input" required>
+    </div>
+
+    <div class="form-group alignContent">
+      <button type="submit">Login</button>
+
+    </div>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+    <span class="psw">Forgot <a href="#">password?</a></span>
   </form>
+
   <script type="text/javascript" src="public\assets\js\login.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
+
 </html>

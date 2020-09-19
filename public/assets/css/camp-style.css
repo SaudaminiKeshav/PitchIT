@@ -8,9 +8,9 @@ form {
   
 /* Full-width inputs */
 input[type=text], input[type=password] {
-    width: 30%;
+    width: 85%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 10px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -61,4 +61,11 @@ span.psw {
         display: block;
         float: none;
     }
+}
+
+.alignContent{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 10px;
 }

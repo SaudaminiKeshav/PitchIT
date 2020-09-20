@@ -1,0 +1,16 @@
+.hideForm{
+    display: none;
+}
+
+.showForm{
+    display: block;
+}
+
+.blueBg{
+background-color: #519FD6;
+}
+
+.removeBgColor{
+    transition: background-color 2.5s ease;
+background-color: white;
+}

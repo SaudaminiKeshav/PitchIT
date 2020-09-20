@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+    <h1 class="navbar-title">PitchIT</h1>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect create-trip">
+    + Create A Trip
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect logout">
+    Logout
+    </button>
+</nav>
+
+<div class="description-container">
+    <div id="description">
+        <p>Welcome to PitchIT, where planning a camping trip with your friends is just a few clicks away!</p>
+        <p>Happy Camping!</p>
+    </div>
+</div>
+
+<div class="trip-dashboard">
+    <ul>
+        {{#each trips}}
+            {{#if created-trip}}
+                {{> trips/camp-block}}
+            {{/if}}
+        {{/each}}
+    </ul>
+</div>
+
+<footer></footer>

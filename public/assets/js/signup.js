@@ -1,15 +1,21 @@
 
 
+function redirectToLoginPage() {
+  location.replace("login.html")
+}
+
 $(document).ready(function () {
+
   $("#formcontainer").toggleClass("hideForm");
   $("body").toggleClass("blueBg");
-  setTimeout(function(){
+  setTimeout(function () {
     $("body").toggleClass("removeBgColor");
     $("#formcontainer").fadeIn(2000);
     $("#loadingSpinner").toggleClass("hideForm")
-   
-  }, 3000); 
+  }, 3000);
 
+  const anim = $("#anim");
+  anim.toggleClass("hideForm");
 
   // Getting references to our form and input
   var signUpForm = $("form.signup");
@@ -21,6 +27,7 @@ $(document).ready(function () {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function (event) {
     event.preventDefault();
+
     var userData = {
       name: nameInput.val().trim(),
       number: phoneNumberInput.val().trim(),
@@ -41,7 +48,7 @@ $(document).ready(function () {
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
+  function signUpUser(name, number, email, password) {
     $.post("/api/signup", {
       name: name,
       number: number,
@@ -49,6 +56,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function (data) {
+        anim.toggleClass("showForm");
         window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })

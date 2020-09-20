@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             }
           },
           password: {
-            type: DataTypes.Date,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
               len: [8, 16]

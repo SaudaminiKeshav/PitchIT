@@ -1,5 +1,7 @@
 
-
+ const anim = $("#anim");
+ anim.toggleClass("hideForm");
+ 
 function redirectToLoginPage() {
   location.replace("login.html")
 }
@@ -14,8 +16,7 @@ $(document).ready(function () {
     $("#loadingSpinner").toggleClass("hideForm")
   }, 3000);
 
-  const anim = $("#anim");
-  anim.toggleClass("hideForm");
+ 
 
   // Getting references to our form and input
   var signUpForm = $("form.signup");

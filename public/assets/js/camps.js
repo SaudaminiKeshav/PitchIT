@@ -1,14 +1,34 @@
 $(function() {
+  // button to create a new trip
+  $(".create-trip-btn").on("click", function(event) {
+    event.preventDefault();
+
+    app.get("/home", function(req, res) {
+      res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
+    });
+
+    // $.ajax("/api/create", {
+    //   type: "GET",
+    //   data:
+    // }).then(
+    //   function() {
+    //     console.log("creating new trip");
+    //     location.reload();
+    // });
+  });
+
   // This is for the submit button to pupulate the new camping trip
-  $(".submit-trip").on("submit", function(event) {
+  $(".submit-trip").on("click", function(event) {
     event.preventDefault();
 
     // Values to create a new trip
     var newTrip = {
-      camp_site: $("#camp-site").val().trim(),
-      date: $("#date").val(),
-      people: $("#people").val(),
-      supplies: $("#supplies").val()
+      title: $("#title").val().trim(),
+      location: $("#location").val().trim(),
+      date: $("#date").val().trim(),
+      campers: $("#campers").val().trim(),
+      items: $("#items").val(),
+      completed: 0
     };
 
     // Post new trip
@@ -25,10 +45,10 @@ $(function() {
   // Button inside the camping trip card to update it
   $(".update-trip").on("click", function(event) {
     var id = $(this).data("id");
-    var newTrip = $(this).data("updateTrip");
+    var updateTrip = $(this).data("completed");
 
     var updateTripState = {
-      trip: newTrip
+      completed: newCompleted
     };
 
     $.ajax("/api/trips/" + id, {
@@ -36,7 +56,7 @@ $(function() {
       data: updateTripState
     }).then(
       function() {
-        console.log("changed state to", newTrip);
+        console.log("changed state to", updateTrip);
         location.reload();
       });
   });

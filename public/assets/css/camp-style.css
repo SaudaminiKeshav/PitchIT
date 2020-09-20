@@ -2,8 +2,8 @@
 form {
     border: 3px solid #f1f1f1;
     margin-top: 50px;
-    margin-left: 400px;
-    margin-right: 400px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
   
 /* Full-width inputs */
@@ -63,9 +63,31 @@ span.psw {
     }
 }
 
+
 .alignContent{
     display: flex;
     align-items: center;
     justify-content: start;
     margin-top: 10px;
 }
+
+/* Create Trip Form */
+#create-adventure {
+    margin-top: 50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 15px;
+}
+
+#campers {
+    width: 80%;
+    margin-right: 20px;
+}
+
+.submit-camp-btn {
+    width: 20%
+}
+
+/* -------------------------- */
+
+

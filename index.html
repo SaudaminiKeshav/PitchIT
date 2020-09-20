@@ -12,7 +12,7 @@
 <body>
 
     <div class="container">
-        <div class="row"  id="formcontainer">
+        <div class="row" id="formcontainer">
             <br><br><br>
             <div class="col-md-6 col-md-offset-3">
                 <h2>Sign Up Form</h2>
@@ -45,15 +45,24 @@
 
                     <button type="submit" class="btn btn-default">Sign Up</button>
                 </form>
+                <div id="anim">
+                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_neDzQu.json"
+                        background="transparent" speed="1" style="width: 50px; height: 50px;" autoplay></lottie-player>
+                </div>
                 <br />
                 <p>Or <button onclick="redirectToLoginPage()">Login</button></p>
+
             </div>
         </div>
-    </div>
-    <img src="public\assets\flyingballloader.gif" id="loadingSpinner"
-        style="position: fixed; top: 50%;left: 50%; transform: translate(-50%, -50%);">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="public\assets\js\signup.js"></script>
+        <img src="public\assets\flyingballloader.gif" id="loadingSpinner"
+            style="position: fixed; top: 50%;left: 50%; transform: translate(-50%, -50%);">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.3/lottie.min.js"
+            integrity="sha512-35O/v2b9y+gtxy3HK+G3Ah60g1hGfrxv67nL6CJ/T56easDKE2TAukzxW+/WOLqyGE7cBg0FR2KhiTJYs+FKrw=="
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script type="text/javascript" src="public\assets\js\signup.js"></script>
 
 </body>
 

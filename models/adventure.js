@@ -7,14 +7,18 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
-        len: [1]
+        validate: {
+          len: [1]
+        }
       },
       location: {
         type: DataTypes.STRING,
         allowNull: false,
-        len: [1]
+        validate: {
+          len: [1]
+        }
       },
       campers: {
         type: DataTypes.TEXT,
@@ -23,6 +27,11 @@ module.exports = function(sequelize, DataTypes) {
       items: {
         type: DataTypes.TEXT,
         allowNull: true,
+      },
+      completed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       }
     });
   

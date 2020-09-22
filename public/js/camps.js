@@ -54,15 +54,4 @@ $(function() {
         location.reload();
     });
   });
-
-  $(".logout").on("click", function(event) {
-    var id = $(this).data("id");
-
-    $.ajax("/api/trips/" + id, {
-        type: "DELETE"
-    }).then(function() {
-        console.log("deleted trip", id);
-        location.reload();
-    });
-  });
 });

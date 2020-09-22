@@ -1,7 +1,14 @@
+const anim = $("#anim");
+anim.toggleClass("hideForm");
 
 $(document).ready(function () {
-
-  loadingSpinner();
+  $("#formcontainer").toggleClass("hideForm");
+  $("body").toggleClass("blueBg");
+  setTimeout(function () {
+    $("body").toggleClass("removeBgColor");
+    $("#formcontainer").fadeIn(2000);
+    $("#loadingSpinner").toggleClass("hideForm")
+  }, 3000);
 
  const anim = $("#anim");
  anim.toggleClass("hideForm");
@@ -46,7 +53,7 @@ $(document).ready(function () {
     })
       .then(function (data) {
         anim.toggleClass("showForm");
-        window.location.replace("/dashboard");
+        // window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);

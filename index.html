@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link rel="stylesheet" href="./public/assets/css/signup.css" >
+    <link rel="stylesheet" href="/public/assets/css/signup.css" >
+    <script type="text/javascript" src="/public/assets/js/signup.js"></script>
 </head>
 
 <body>
@@ -45,20 +46,18 @@
 
                     <button type="submit" class="btn btn-default">Sign Up</button>
                 </form>
-                <div id="anim">
-                    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_neDzQu.json"
+                <div>
+                    <lottie-player id="anim" src="https://assets5.lottiefiles.com/packages/lf20_neDzQu.json"
                         background="transparent" speed="1" style="width: 50px; height: 50px;" autoplay></lottie-player>
                 </div>
                 <br />
-                <p>Or <a href="/login">here</a></p>
+                <p>Or <a href="/login">Login</a></p>
 
             </div>
             <img src="public/assets/flyingballloader.gif" id="loadingSpinner"
             style="position: fixed; top: 50%;left: 50%; transform: translate(-50%, -50%);">
         </div>
-      
-
-      
+       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.3/lottie.min.js"

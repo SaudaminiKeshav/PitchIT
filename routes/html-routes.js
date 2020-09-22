@@ -1,4 +1,5 @@
 var path = require("path");
+var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Requiring our custom middleware for checking if a user is logged in
@@ -22,13 +23,37 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../login.html"));
   });
 
+  app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
+    // if (req.user) {
+    //   res.redirect("/members");
+    // }
+    res.sendFile(path.join(__dirname, "../index.html"));
+  });
+
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
-  
-  app.get("/home", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
+
+  app.get("/dashboard", function(req, res) {
+    db.User.findAll({}).then(function(dbUser) {
+        var hbsObject = {
+            user: dbUser
+        };
+        console.log("object", hbsObject);
+        res.render("index", hbsObject);
+    });
+  });
+
+  app.get("/create", function(req, res) {
+    db.User.findAll({}).then(function(dbUser) {
+        var hbsObject = {
+            user: dbUser
+        };
+        console.log("object", hbsObject);
+        res.render("create-block", hbsObject);
+    });
   });
 };

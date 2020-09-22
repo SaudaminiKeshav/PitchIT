@@ -7,3 +7,5 @@ Username, Password, Email
 
 Saved Trips:
 Camp site, date, people, supplies
+
+how to include one handlebars template with another

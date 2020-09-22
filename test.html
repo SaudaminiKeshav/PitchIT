@@ -13,50 +13,45 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 <body>
-    <form id="create-adventure">
-        <div>
-            <label for="title">Adventure Name:</label>
-            <input type="text" id="title">
-        </div>
-        <br>
-        <div>
-            <label for="location">Campground:</label>
-            <input list="campground-list" type="text" id="location" placeholder="search...">
-            <datalist id="campground-list">
-                <option>camp 1</option>
-                <option>camp 2</option>
-                <option>camp 3</option>
-                <option>camp 4</option>
-            </datalist>
-        </div>
-        <br>
-        <div>
-            <label for="date">Dates:</label>
-            <input type="text" id="date" placeholder="MM/DD/YYYY - MM/DD/YYYY">
-        </div>
-        <br>
-        <div>
-            <label for="campers">Additional Camper's Username:</label>
-            <input list="campers-list" type="text" id="campers">
-            <datalist id="campers-list">
-                <option>Juliana</option>
-                <option>Corey</option>
-                <option>Armando</option>
-                <option>Damini</option>
-            </datalist>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
-                <i class="material-icons">add</i>
+    <div>
+        <nav class="navbar fixed-top navbar-light bg-light">
+            <h1 class="navbar-title">PitchIT</h1>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect create-trip-btn" href="./partials/create-block.handlebars">
+            + Create A Trip
             </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect logout">
+            Logout
+            </button>
+        </nav>
+    
+        <div class="description-container">
+            <div id="description">
+                <p>Welcome to PitchIT, where planning a camping trip with your friends is just a few clicks away!</p>
+                <p>Happy Camping!</p>
+            </div>
         </div>
-        <br>
-        <div class="form-group supply-list">
-            <label for="exampleFormControlTextarea1">Supply List:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    
+        <div class="trip-dashboard">
+            <ul>
+                <!-- {{#each trips}}
+                    {{#unless completed}}
+                        {{> trips/camp-block completed=true}}
+                    {{/unless}}
+                {{/each}} -->
+            </ul>
         </div>
-
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect submit-camp-btn">
-            Submit
-        </button>
-    </form>
+    
+        <div class="completed-dashboard">
+            <ul>
+                <!-- {{#each trips}}
+                    {{#if completed}}
+                        {{> trips/camp-block completed=false}}
+                    {{/if}}
+                {{/each}} -->
+            </ul>
+        </div>
+    
+        <footer></footer>
+    </div>
 </body>
 </html>

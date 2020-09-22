@@ -1,13 +1,7 @@
-
- const anim = $("#anim");
- anim.toggleClass("hideForm");
-
-function redirectToLoginPage() {
-  location.replace("login.html")
-}
+const anim = $("#anim");
+anim.toggleClass("hideForm");
 
 $(document).ready(function () {
-
   $("#formcontainer").toggleClass("hideForm");
   $("body").toggleClass("blueBg");
   setTimeout(function () {
@@ -39,7 +33,7 @@ $(document).ready(function () {
     if (!userData.name || !userData.number || !userData.email || !userData.password) {
       return;
     }
-     anim.toggleClass("showForm");
+
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.name, userData.number, userData.email, userData.password);
     nameInput.val("");
@@ -58,7 +52,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function (data) {
-       
+        anim.toggleClass("showForm");
         // window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })

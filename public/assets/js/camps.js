@@ -1,22 +1,4 @@
 $(function() {
-  // button to create a new trip
-  $(".create-trip-btn").on("click", function(event) {
-    event.preventDefault();
-
-    app.get("/home", function(req, res) {
-      res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
-    });
-
-    // $.ajax("/api/create", {
-    //   type: "GET",
-    //   data:
-    // }).then(
-    //   function() {
-    //     console.log("creating new trip");
-    //     location.reload();
-    // });
-  });
-
   // This is for the submit button to pupulate the new camping trip
   $(".submit-trip").on("click", function(event) {
     event.preventDefault();

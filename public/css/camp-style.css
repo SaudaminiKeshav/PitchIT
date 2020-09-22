@@ -1,3 +1,4 @@
+
 /* -----Login page------ */
 .login {
     border: 3px solid #f1f1f1;
@@ -15,6 +16,23 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -29,6 +47,7 @@ img.avatar {
     border-radius: 50%;
 }
 
+/* The "Forgot password" text */
 #signuip-link {
     text-align: center;
 }
@@ -52,7 +71,6 @@ span.psw {
     justify-content: start;
     margin-top: 10px;
 }
-/* ---------------------------------- */
 
 /* -----Create Trip Form----- */
 #create-adventure {
@@ -67,8 +85,6 @@ span.psw {
     margin-right: 20px;
 }
 
-/* ---------------------------------- */
-
-/* -----Dashboard----- */
-
-/* ---------------------------------- */
+.submit-camp-btn {
+    width: 20%
+}

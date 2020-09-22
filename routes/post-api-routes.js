@@ -76,7 +76,7 @@ module.exports = function(app) {
     // otherwise send back an error
     app.post("/api/signup", function (req, res) {
         
-        db.user.create({
+        db.User.create({
             name: req.body.name,
             number: req.body.number,
             email: req.body.email,
@@ -84,7 +84,7 @@ module.exports = function(app) {
         })
             .then(function () {
                 console.log("here");
-                // res.redirect(307, "/api/login");
+                res.redirect(307, "/api/login");
             })
             .catch(function (err) {
                 res.status(401).json(err);

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "CabMcb2017",
+    "password": "clio2345",
     "database": "sequelize_pitchit",
     "host": "127.0.0.1",
     "dialect": "mysql"

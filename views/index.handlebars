@@ -4,30 +4,39 @@
             <li class="brand nav-link">
                 <img src="img/tent.png" alt="" class='logo' width='50px'>  
             </li>
-            <li class="nav-link nav-btn"><a href="/create">+ Plan Your Adventure</a></li>
-        </ul>
-        <ul class="side-menu">
             <li class="nav-link nav-btn">
-                <a href="/logout">Sign Out</a>
+                <a href="/create"><button type="button" class="btn btn-outline-success">+ Plan Your Adventure</button></a>
             </li>
         </ul>
 
+        <ul class="side-menu">
+            <li class="nav-link nav-btn">
+                <a href="/logout"><button type="button" class="btn btn-outline-success">Sign Out</button></a>
+            </li>
+        </ul>
     </nav>
+
     <div class="landing">
         <h1 id="main-title" class="title">PitchIT</h1>
         <h1 class="title">Find Yourself Outside.</h1>
+
+        <br>
         <p class="subtitle">Plan a unique trip with your friends that you will remember for a lifetime.</p>
+        
+        <br><br><br><br>
         <div class="boxes">
             <div class="box">
                 <img src="img/camper.png" alt="" width='50'>
                 <h3>Invite Friends</h3>
                 <p>Plan an adventure to your favorite spot or discover a new one that's right for you.</p>
             </div>
+
             <div class="box">
                 <img src="https://image.flaticon.com/icons/svg/2977/2977922.svg" alt="" width='50'>
                 <h3>Day Passes</h3>
                 <p>View up-to-date prices for day and annual passes into National Parks.</p>
             </div>
+
             <div class="box">
                 <img src="img/star.png" alt="" width='50'>
                 <h3>Rate</h3>
@@ -37,43 +46,30 @@
     </div>
 </div>
 
+<div class="trip-card current-trips">
+    <h2 class="card-title">&#9657;&#9657; Current Adventures &#9667;&#9667;</h2>
 
-
-{{!-- <div id="dashboard-container">
-    <div class="navbar">
-        <h1 class="navbar-title">PitchIT</h1>
-        <a href="/create">
-        + Create A Trip
-        </a>
-        <a class="logout-btn" href="/logout">
-            Logout
-        </a>
-        <div id="description">
-            <p>Welcome to PitchIT, where planning your National Park road trip with your friends is just a few clicks away!</p>
-        </div>
-    </div>
-
-    <div class="trip-dashboard">
-        <ul>
-            <p>test</p>
-            {{#each trips}}
-                {{#unless completed}}
-                    {{> trips/camp-block completed=true}}
-                {{/unless}}
-            {{/each}}
-        </ul>
-    </div>
-
-    <div class="completed-dashboard">
-        <ul>
-            <p>test2</p>
-            {{#each trips}}
-                {{#if completed}}
-                    {{> trips/camp-block completed=false}}
-                {{/if}}
-            {{/each}}
-        </ul>
-    </div>
+    {{#each trips}}
+        {{#unless completed}}
+            <ul class="trip-ul"></ul>
+                {{> trips/camp-block completed=true}}
+            </ul>
+        {{/unless}}
+    {{/each}}
 </div>
 
-<footer></footer> --}}
+<br><br>
+<div class="trip-card completed-trips">
+    <h2 class="card-title">&#9657;&#9657; Completed Adventures &#9667;&#9667;</h2>
+
+    {{#each trips}}
+        {{#if completed}}
+            <ul class="trip-ul"></ul>
+                {{> trips/camp-block completed=false}}
+            </ul>
+        {{/if}}
+    {{/each}}
+</div>
+
+<br><br><br>
+<footer></footer>

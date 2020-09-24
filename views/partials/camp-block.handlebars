@@ -1,16 +1,18 @@
-<div class="card">
-  <div class="card-body">
-    <h1>{{title}}</h1>
-    {{#if completed}}
-    	<button class="update-trip" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
-			  Update Trip
-		  </button>
 
-      <button class="completed" data-id="{{id}}" data-newCompleted="{{completed}}">
-			  Complete Trip
-		  </button>
-    {{/if}}
-    
-	  <button class="delete-trip" data-id="{{this.id}}">Delete</button>
-  </div>
-</div>
+{{#if completed}}
+  <h3>{{ title }}</h3>
+
+  <button class="update-trip" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
+    Update Trip
+  </button>
+  <button class="completed" data-id="{{id}}" data-newCompleted="{{completed}}">
+    Complete Trip
+  </button>
+  <button class="delete-trip" data-id="{{this.id}}">Delete</button>
+{{/if}}
+
+{{#if completed=false}}
+  <h3>{{ title }}</h3>
+
+  <button class="delete-trip" data-id="{{this.id}}">Delete</button>
+{{/if}}

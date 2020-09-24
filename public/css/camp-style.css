@@ -91,12 +91,40 @@ img{
     max-width: 100%;
 }
 
-/* button Styling */
+/* >>> Button Styling <<< */
 .btn{
     margin: 1rem 0;
 }
 
-/* ==== Nav Styling ==== */
+#back2Top {
+    width: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    cursor: pointer;
+    -moz-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    background-color: #DDD;
+    color: #555;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+#back2Top:hover {
+    background-color: rgb(85, 241, 105);
+    color: #000;
+}
+
+/* >>> Nav Styling <<< */
 .main-nav{
     display: flex;
     position: absolute;
@@ -118,7 +146,7 @@ img{
     padding: 1rem;
 }
 
-/* ==== Hero Styling ==== */
+/* >>> Hero Styling <<< */
 .hero{
     height: 75vh;
     background:
@@ -144,12 +172,16 @@ img{
     padding: var(--space);
 }
 
+.subtitle {
+    font-size: 18px;
+}
+
 #main-title {
     font-family: 'Caveat', cursive;
     font-size: 110px;
 }
 
-/* ==== Boxes Styling ==== */
+/* >>> Boxes Styling <<< */
 .boxes{
     position: absolute;
     top: 60vh;
@@ -177,6 +209,60 @@ img{
 .box h3{
     font-size: 1rem;
     padding: .5rem 0;
+}
+
+/* >>> Adventure Cards <<< */
+.trip-card {
+    padding: 1.5rem;
+    background: white;
+    width: 80%;
+    margin: auto;
+    min-height: 15rem;
+    border-radius: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.6);
+}
+
+.card-title {
+    font-family: 'Caveat', cursive;
+    border-bottom-style: double;
+}
+
+.current-trips {
+    margin-top: 200px;
+}
+
+.trip-ul {
+    border-bottom: 1px solid;
+}
+
+/* >>> Footer <<< */
+#footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: orange;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.devs-title {
+    display: inline;
+    font-family: 'Caveat', cursive;
+}
+
+.devs {
+    display: inline;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.socials {
+    color: rgb(41, 40, 40);
 }
 
 /* ================================================ */

@@ -65,6 +65,7 @@ $(document).ready(function () {
         anim.toggleClass("showForm");
         window.location.replace("/dashboard");
         // If there's an error, handle it by throwing up a bootstrap alert
+        console.log(name, number, email, password);
       })
       .catch(handleLoginErr);
   }

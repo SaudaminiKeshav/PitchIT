@@ -1,30 +1,24 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+$(document).ready(function () {
+  new Splide('.splide').mount();
+  var textImg = $('.title');
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+  var backgrounds = new Array(
+    'url(../img/gallery/text-background1.jpg)'
+    , 'url(../img/gallery/text-background2.jpg)'
+    , 'url(../img/gallery/text-background3.jpg)'
+    , 'url(../img/gallery/text-background4.jpg)'
+    , 'url(../img/gallery/text-background5.jpg)'
+    , 'url(../img/gallery/text-background6.jpg)'
+  );
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+  var current = 0;
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  function nextBackground() {
+    current++;
+    current = current % backgrounds.length;
+    textImg.css('background-image', backgrounds[current]);
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
+  setInterval(nextBackground, 1500);
+
+  textImg.css('background-image', backgrounds[0]);
+});

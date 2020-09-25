@@ -1,16 +1,18 @@
 $(function() {
   // This is for the submit button to pupulate the new camping trip
   $(".submit-trip").on("click", function(event) {
+    console.log("clicked submit trip");
     event.preventDefault();
 
     // Values to create a new trip
     var newTrip = {
       title: $("#title").val().trim(),
-      location: $("#location").val().trim(),
       date: $("#date").val().trim(),
+      location: $("#location").val().trim(),
       campers: $("#campers").val().trim(),
       items: $("#items").val(),
-      completed: 0
+      completed: 0,
+      review: ""
     };
 
     // Post new trip
@@ -20,7 +22,7 @@ $(function() {
     }).then(
       function() {
         console.log("created new trip");
-        location.reload();
+        window.location.replace("/dashboard");
       });
   });
 

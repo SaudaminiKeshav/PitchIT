@@ -1,0 +1,43 @@
+
+{{#if completed}}
+  <h3>{{ title }}</h3>
+
+  <button class="update-trip" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
+    Update Trip
+  </button>
+  <button class="completed" data-id="{{id}}" data-newCompleted="{{completed}}">
+    Complete Trip
+  </button>
+  <button type="button" class="btn btn-primary writeTxtBtn" data-id="{{id}}" data-toggle="modal" data-target="#exampleModalCenter">
+        Write Review
+  </button> 
+  
+
+              <!-- Review Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">"Camp Title"</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Write your review:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="250"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary save-review" data-dismiss="modal" data-id="{{id}}">Save changes</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Review Modal -->
+{{/if}}
+
+<button class="delete-trip" data-id="{{this.id}}">Delete</button>

@@ -13,9 +13,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 var exphbs = require("express-handlebars");
+var Handlebars = require('handlebars');
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine('handlebars', exphbs({
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+
+//app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // We need to use sessions to keep track of our user's login status

@@ -2,16 +2,25 @@ const anim = $("#anim");
 anim.toggleClass("hideForm");
 
 $(document).ready(function () {
-  $("#formcontainer").toggleClass("hideForm");
-  $("body").toggleClass("blueBg");
-  setTimeout(function () {
-    $("body").toggleClass("removeBgColor");
-    $("#formcontainer").fadeIn(2000);
-    $("#loadingSpinner").toggleClass("hideForm")
-  }, 3000);
+  // $("#formcontainer").toggleClass("hideForm");
+  // $("body").toggleClass("blueBg");
+  // setTimeout(function () {
+  //   $("body").toggleClass("removeBgColor");
+  //   $("#formcontainer").fadeIn(2000);
+  //   $("#loadingSpinner").toggleClass("hideForm")
+  // }, 3000);
 
- const anim = $("#anim");
- anim.toggleClass("hideForm");
+  window.addEventListener("load", function () {
+      init();
+  });
+
+  function init() {
+    $("#formcontainer").toggleClass("hideForm");
+    setTimeout(function () {
+      $("#formcontainer").fadeIn(1500);
+      $(".day").toggleClass("hideForm")
+    }, 2000);
+  };
 
   // Getting references to our form and input
   var signUpForm = $("form.signup");
@@ -53,8 +62,9 @@ $(document).ready(function () {
     })
       .then(function (data) {
         anim.toggleClass("showForm");
-        // window.location.replace("/members");
+        window.location.replace("/dashboard");
         // If there's an error, handle it by throwing up a bootstrap alert
+        console.log(name, number, email, password);
       })
       .catch(handleLoginErr);
   }

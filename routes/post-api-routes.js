@@ -71,12 +71,37 @@ module.exports = function(app) {
         })
     });
 
+    app.post("/api/parks", function(req, res) {
+
+        console.log("I made it to 76");
+
+        db.Nationalpark.create({
+            name: req.body.name,
+            state: req.body.state,
+            description: req.body.description,
+            price: req.body.price,
+            image0: req.body.image0,
+            image1: req.body.image1,
+            image2: req.body.image2,
+            image3: req.body.image3,
+            weatherInfo: req.body.weatherInfo,
+            infoUrl: req.body.infoUrl
+        }).then(function () {
+            console.log("parks added!");
+            res.json(req);
+        })
+        .catch(function (err) {
+            //res.status(401).json(err);
+            console.log("error in routes file");
+        });
+    });
+
     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
     // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
     // otherwise send back an error
     app.post("/api/signup", function (req, res) {
         
-        db.user.create({
+        db.User.create({
             name: req.body.name,
             number: req.body.number,
             email: req.body.email,

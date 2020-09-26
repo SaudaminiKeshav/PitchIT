@@ -89,8 +89,8 @@ module.exports = function(app) {
     //REVIEW API ROUTES
     app.put("/api/review/:id", function(req, res) {
 
-        console.log(req);
-        console.log(req.body);
+        // console.log(req);
+        // console.log(req.body);
         db.Adventure.update(
             { review: req.body.review },
             { where: { id: req.body.id } }

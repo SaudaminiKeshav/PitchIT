@@ -96,6 +96,10 @@ img{
     margin: 1rem 0;
 }
 
+.gallery-btn {
+    margin-left: 6px;
+}
+
 #back2Top {
     width: 40px;
     line-height: 40px;

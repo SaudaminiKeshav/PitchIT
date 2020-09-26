@@ -6,6 +6,7 @@
             </li>
             <li class="nav-link nav-btn">
                 <a href="/create"><button type="button" class="btn btn-outline-success">+ Plan Your Adventure</button></a>
+                <a href="../gallery.html"><button type="button" class="gallery-btn btn btn-outline-success">Gallery</button></a>
             </li>
         </ul>
 
@@ -49,24 +50,30 @@
 <div class="trip-card current-trips">
     <h2 class="card-title">&#9657;&#9657; Current Adventures &#9667;&#9667;</h2>
 
-    {{#each trips}}
+    {{#each thirdData}}
         {{#unless completed}}
+        <div>
             <ul class="trip-ul"></ul>
-                {{> trips/camp-block completed=true}}
+                {{> adventures/camp-block completed=true}}
             </ul>
+        </div>
         {{/unless}}
     {{/each}}
+
 </div>
+
 
 <br><br>
 <div class="trip-card completed-trips">
     <h2 class="card-title">&#9657;&#9657; Completed Adventures &#9667;&#9667;</h2>
 
-    {{#each trips}}
+    {{#each thirdData}}
         {{#if completed}}
+        <div>
             <ul class="trip-ul"></ul>
-                {{> trips/camp-block completed=false}}
+                {{> adventures/camp-block completed=false}}
             </ul>
+        </div>
         {{/if}}
     {{/each}}
 </div>

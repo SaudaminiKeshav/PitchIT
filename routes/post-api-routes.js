@@ -2,77 +2,21 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
-    app.get("/api/adventures", function(req, res) {
-        db.Adventure.findAll({}).then(function(dbAdventure) {
-            res.json(dbAdventure);
-        });
-        // var query = {};
-        // if (req.query.author_id) {
-        //     query.AuthorId = req.query.author_id;
-        // }
-        // db.Post.findAll({
-        //     where: query,
-        //     include: [db.Author]
-        // }).then(function(dbPost) {
-        //     res.join(dbPost);
-        // });
-    });
 
-    // app.get("/api/posts/:id", function(req, res) {
-    //     db.Post.findOne({
-    //         where: {
-    //             id: req.params.id
-    //         },
-    //         include: [db.Author]
-    //     }).then(function(dbPost) {
-    //         res.json(dbPost);
-    //     });
-    // });
-
-    app.post("/api/adventures", function(req, res) {
-        db.Adventure.create({
-            title: req.body.title,
-            date: req.body.date,
-            location: req.body.location,
-            campers: req.body.campers,
-            items: req.body.items
-        }).then(function(dbAdventure) {
-            res.json(dbAdventure);
-        })
-
-    });
-
-    app.delete("/api/adventures/:id", function(req, res) {
-        db.Adventure.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(dbAdventure) {
-            res.json(dbAdventure);
+    //API ROUTES TO RENDER ON DASHBOARD
+    app.get("/dashboard", function(req, res) {
+        db.Adventure.all(function(data) {
+            var handleBarsObject = {
+                adventures: data
+            };
+            res.render("index", handleBarsObject);
         });
     });
+    //API ROUTES TO RENDER ON DASHBOARD
 
-    app.put("/api/adventures", function(req, res) {
-        db.Adventure.update({
-            title: req.body.title,
-            date: req.body.date,
-            location: req.body.location,
-            campers: req.body.campers,
-            items: req.body.items
-        },
-        {
-            where: {
-                id: req.body.id
-            }
-        }).then(function(dbAdventure) {
-            res.json(dbAdventure);
-        }).catch(function(err) {
-            res.json(err);
-        })
-    });
 
+    //API ROUTE TO SAVE ALL PARK INFO
     app.post("/api/parks", function(req, res) {
-
         console.log("I made it to 76");
 
         db.Nationalpark.create({
@@ -95,10 +39,9 @@ module.exports = function(app) {
             console.log("error in routes file");
         });
     });
+    //API ROUTE TO SAVE ALL PARK INFO
 
-    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-    // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-    // otherwise send back an error
+   //SIGNUP/LOGIN/LOGOUT ROUTES
     app.post("/api/signup", function (req, res) {
         
         db.User.create({
@@ -116,18 +59,16 @@ module.exports = function(app) {
             });
     });
 
-    // Using the passport.authenticate middleware with our local strategy.
-    // If the user has valid login credentials, send them to the members page.
-    // Otherwise the user will be sent an error
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
         res.json(req.user);
     });
 
-    // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
         res.redirect("/");
     });
+    //SIGNUP/LOGIN/LOGOUT ROUTES
+
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function (req, res) {
@@ -143,4 +84,81 @@ module.exports = function(app) {
             });
         }
     });
-};
+    // Route for getting some data about our user to be used client side
+
+    //REVIEW API ROUTES
+    app.put("/api/review/:id", function(req, res) {
+
+        // console.log(req);
+        // console.log(req.body);
+        db.Adventure.update(
+            { review: req.body.review },
+            { where: { id: req.body.id } }
+            
+        //     {
+        //     review: req.body.review,
+        // },
+        //    {
+        //     where: {
+        //         id: req.body.id
+        //     }
+        ).then(function(result) {
+            if (result.changedRows == 0) {
+                console.log("no changes made");
+                return res.status(404).end();
+            } else {
+                console.log("review added");
+                res.status(200).end();
+            }
+        });
+    });
+    //REVIEW API ROUTES
+
+
+    //ADVENTURE API ROUTES
+    app.post("/api/trips", function(req, res) {
+        db.Adventure.create({
+            title: req.body.title,
+            date: req.body.date,
+            location: req.body.location,
+            campers: req.body.campers,
+            items: req.body.items,
+            completed: req.body.completed,
+            review: req.body.review
+        }).then(function() {
+            console.log("saved trip");
+            res.redirect("/dashboard");
+        }).catch(function (err) {
+            console.log("error in routes file");
+        });
+    });
+
+    app.put("/api/trips/:id", function(req, res) {
+        db.Adventure.update({
+            completed: req.body.completed
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function(result) {
+            if (result.changedRows == 0) {
+                console.log("no changes made");
+                return res.status(404).end();
+            } else {
+                console.log("changed to completed");
+                res.status(200).end();
+            }
+        });
+    });
+
+    app.delete("/api/trips/:id", function(req, res) {
+        db.Adventure.destroy({
+          where: {
+            id: req.params.id
+          }
+        }).then(function(dbAdventure) {
+          res.json(dbAdventure);
+        });
+    });
+    //ADVENTURE API ROUTES
+}

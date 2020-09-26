@@ -69,9 +69,11 @@
 
     {{#each thirdData}}
         {{#if completed}}
+        <div>
             <ul class="trip-ul"></ul>
                 {{> adventures/camp-block completed=false}}
             </ul>
+        </div>
         {{/if}}
     {{/each}}
 </div>

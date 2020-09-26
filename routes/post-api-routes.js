@@ -17,22 +17,17 @@ module.exports = function(app) {
 
     //API ROUTE TO SAVE ALL PARK INFO
     app.post("/api/parks", function(req, res) {
-        console.log("I made it to 76");
-
+        console.log("I made it to 20");
+        console.log(req.body);
         db.Nationalpark.create({
+            parkcode: req.body.parkcode,
             name: req.body.name,
             state: req.body.state,
-            description: req.body.description,
-            price: req.body.price,
             image0: req.body.image0,
-            image1: req.body.image1,
-            image2: req.body.image2,
-            image3: req.body.image3,
-            weatherInfo: req.body.weatherInfo,
             infoUrl: req.body.infoUrl
         }).then(function () {
-            console.log("parks added!");
-            res.json(req);
+            console.log("park added to db!");
+            //res.json(req);
         })
         .catch(function (err) {
             //res.status(401).json(err);

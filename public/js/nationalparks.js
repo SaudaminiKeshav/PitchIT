@@ -1,4 +1,6 @@
-let parkCodesAr = ["ARCH", "BRCA", "CANY", "CARE", "CAVE", "DEVA", "GRBA", "GRCA", "GRSA", "GUMO", "JOTR", "KICA", "LAKE", "MEVE", "MOJA", "SAGU", "SEQU", "ZION"];
+
+//let parkCodesAr = ["YOSE", "WHSA", "GRSM", "ARCH", "BRCA", "CANY", "CARE", "CAVE", "DEVA", "GRBA", "GRCA", "GRSA", "GUMO", "JOTR", "KICA", "LAKE", "MEVE", "MOJA", "SAGU", "SEQU", "ZION"];
+let parkCodesAr = ["BADL", "BISC", "BLCA", "CARI", "CHIS", "CRLA", "CUVA", "DENA", "DRTO", "EVER", "FOWA", "GAAR", "GLAC", "GLBA", "GRTE", "HALE", "HAVO", "HOSP", "ISRO", "KATM", "KEFJ", "KOVA", "LACL", "LAVO", "MACA", "NOCA", "PEFO", "REDW", "SEKI", "THRO", "VIIS", "VOYA", "WICA", "WRST", "YELL"];
 
 for(i = 0; i < parkCodesAr.length; i++) {
     let parkCode = parkCodesAr[i];
@@ -10,70 +12,42 @@ $.ajax({
     method: "GET"
 }).then(function (response) {
     //console.log(response);
-
+    
+    let parkCode = response.data[0].parkCode;
     let fullName = response.data[0].fullName;
     let inState = response.data[0].states;
-    let parkDescription = response.data[0].description;
-    console.log(fullName);
-    console.log(inState);    
-    console.log(parkDescription);
-
-    //note this returns an array
-    let entranceFees = response.data[0].entranceFees[0].cost;
-    console.log(entranceFees);
-
-    //multiple images to generate a random number each time a user opens a trip
-    //and show the photo corresponding to that number
-    let images0 = response.data[0].images[0].url;
-    let images1 = response.data[0].images[1].url;
-    let images2 = response.data[0].images[2].url;
-    let images3 = response.data[0].images[3].url;
-    let weather = response.data[0].weatherInfo;
-    console.log(images0);
-    console.log(images1);
-    console.log(images2);
-    console.log(images3);
-    console.log(weather);
-
+    let images0 = response.data[0].images[1].url;
     let moreInfoUrl = response.data[0].url;
-    console.log(moreInfoUrl);
 
-    // var query = connection.query(
-    //   "INSERT INTO nationalparks SET ?",
-    //   {
-    //       name: fullName,
-    //       state: inState,
-    //       description: parkDescription,
-    //       price: entranceFees,
-    //       image0: images0,
-    //       image1: images1,
-    //       image2: images2,
-    //       image3: images3,
-    //       weatherInfo: weather,
-    //       infoUrl: moreInfoUrl
-    //   },
-    //     function(err, res) {
-    //       if (err) throw err;
-    //       console.log(res.affectedRows + " park inserted!\n");
-    //     }
-    //   );
+    console.log(`VALUES (DEFAULT, "${parkCode}", "${fullName}", "${inState}", "${images0}", "${moreInfoUrl}", "0000-00-00 00:00:00", "0000-00-00 00:00:00");`);
 
-    $.post("/api/parks", {
-            name: fullName,
-            state: inState,
-            description: "description",
-            price: entranceFees,
-            image0: images0,
-            image1: images1,
-            image2: images2,
-            image3: images3,
-            weatherInfo: "weather",
-            infoUrl: moreInfoUrl
-   })
-      .then(function (data) {
-        console.log("made it to then nationalpark! ");
-        // If there's an error, handle it by throwing up a bootstrap alert
-      });
+
+//     $.post("/api/parks", {
+//             parkCode: parkCode,
+//             name: fullName,
+//             state: inState,
+//             image0: "image0",
+//             infoUrl: moreInfoUrl
+//    })
+//       .then(function () {
+//         console.log("Made it to the nationalpark!");
+//         // If there's an error, handle it by throwing up a bootstrap alert
+//       });
+ let parkObj = {
+    parkcode: parkCode,
+    name: fullName,
+    state: inState,
+    image0: images0,
+    infoUrl: moreInfoUrl
+    }
+
+    $.ajax("/api/parks", {
+        type: "POST",
+        data: parkObj
+    }).then( function() {
+      console.log("created new park");
+    });
+
 });
 }
 

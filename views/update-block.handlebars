@@ -1,12 +1,12 @@
 <form id="create-adventure">
     <div>
         <label for="title">Adventure Name:</label>
-        <input type="text" id="title">
+        <input type="text" id="title" placeholder="{{ title }}">
     </div>
     <br>
     <div>
         <label for="location">National Park:</label>
-        <input list="campground-list" type="text" id="location" placeholder="search...">
+        <input list="campground-list" type="text" id="location" placeholder="{{ location }}">
         <datalist id="campground-list">
             <option>camp 1</option>
             <option>camp 2</option>
@@ -17,12 +17,12 @@
     <br>
     <div>
         <label for="date">Dates:</label>
-        <input type="text" id="date" placeholder="MM/DD/YYYY - MM/DD/YYYY">
+        <input type="text" id="date" placeholder="{{ date }}">
     </div>
     <br>
     <div>
         <label for="campers">Additional Camper's Username:</label>
-        <input list="campers-list" type="text" id="campers">
+        <input list="campers-list" type="text" id="campers" placeholder="{{ campers }}">
         <datalist id="campers-list">
             <option>Juliana</option>
             <option>Corey</option>
@@ -36,8 +36,8 @@
     <br>
     <div class="form-group supply-list">
         <label for="exampleFormControlTextarea1">Backpack:</label>
-        <textarea class="form-control" id="items" rows="3"></textarea>
+        <textarea class="form-control" id="items" rows="3" placeholder="{{ items }}"></textarea>
     </div>
 
-    <a class="submit-trip" href="/dashboard">Submit</a>
+    <a class="save-trip" href="/dashboard">Save</a>
 </form>

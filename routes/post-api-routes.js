@@ -53,7 +53,7 @@ module.exports = function (app) {
         })
             .then(function () {
                 console.log("here###########");
-                sendSignupEmail(req.body.email)
+                sendSignupEmailAndRedirectToLogin(req.body.email)
                 res.redirect(307, "/api/login");
             })
             .catch(function (err) {
@@ -129,6 +129,7 @@ module.exports = function (app) {
             review: req.body.review
         }).then(function () {
             console.log("saved trip");
+            sendTripEmail(app, req.body.title, req.body.date, req.body.location, req.body.campers, req.body.items, req.body.completed, req.body.review);
             res.redirect("/dashboard");
         }).catch(function (err) {
             console.log("error in routes file");
@@ -165,33 +166,81 @@ module.exports = function (app) {
     //ADVENTURE API ROUTES
 }
 
-function sendSignupEmail(email) {
+async function sendSignupEmailAndRedirectToLogin(email) {
+    var count = 1;
     sgMail.setApiKey("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");
     const msg = {
         to: email,
         from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
         templateId: "d-06d5cd76524e40bfbdc2ae5cf22c2c9c"
-      };
-      //ES6
-      sgMail
-        .send(msg)
-        .then(() => {}, error => {
-          console.error(error);
-      
-          if (error.response) {
+    };
+    //ES6
+   if(count == 1){
+    await sgMail
+    .send(msg)
+    .then(() => {
+        console.log("***********************");
+        count++;
+     }, error => {
+        console.error(error);
+
+        if (error.response) {
             console.error(error.response.body)
-          }
-        });
-      //ES8
-      (async () => {
-        try {
-          await sgMail.send(msg);
-        } catch (error) {
-          console.error(error);
-      
-          if (error.response) {
-            console.error(error.response.body)
-          }
         }
-      })();
+    });
+//ES8
+(async () => {
+    try {
+        await sgMail.send(msg);
+    } catch (error) {
+        console.error(error);
+
+        if (error.response) {
+            console.error(error.response.body)
+        }
+    }
+})();
+   }
+}
+
+function sendTripEmail(app, title, date, location, campers, items, completed, review) {
+    // let email = "";
+    // let username = "";
+    // $.get("/api/user_data").then(function(data) {
+    //     email = data.email;
+    //     username = data.name;
+    //   });
+
+    // sgMail.setApiKey("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");
+    // const msg = {
+    //     to: email,
+    //     from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
+    //     templateId: "d-06d5cd76524e40bfbdc2ae5cf22c2c9c",
+    //     dynamic_template_data: {
+    //     name: username
+    //     }
+    // };
+  
+    // //ES6
+    // sgMail
+    //     .send(msg)
+    //     .then(() => { }, error => {
+    //         console.error(error);
+
+    //         if (error.response) {
+    //             console.error(error.response.body)
+    //         }
+    //     });
+    // //ES8
+    // (async () => {
+    //     try {
+    //         await sgMail.send(msg);
+    //     } catch (error) {
+    //         console.error(error);
+
+    //         if (error.response) {
+    //             console.error(error.response.body)
+    //         }
+    //     }
+    // })();
 }

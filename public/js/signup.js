@@ -12,38 +12,11 @@ var firebaseConfig = {
   measurementId: "G-T3G428HX8G"
 };
 
-
 //*Firebase Cloud storage setup*
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 var database = firebase.database();
 var messageRef = firebase.database().ref("messages")
-sendSignUpEmail();
-//*Firebase Cloud functions setup*
-
-// // Import admin database 
-// import functions from 'firebase-functions';
-// import admin from 'firebase-admin';
-// admin.initializeApp();
-// const db = admin.firestore();
-
-// //Set SENDGRID and its API key
-// import sgMail from '@sendgrid/mail';
-// const SENDGRID_API_KEY = functions.config().sendgrid.apiKey;
-// const TEMPLATE_ID = functions.config().sendgrid.template;
-// sgMail.setApiKey(SENDGRID_API_KEY);
-
-// //send email to user after signup
-// export const welcomeEmail = functions.auth.user().onCreate(user => {
-//   const msg = {
-//     to: "saudamini.keshav@gmail.com",
-//     from: "pitch.it.devs@gmail.com",
-//     templateId: TEMPLATE_ID
-//   }
-
-//   await sgMail.send(msg);
-//    return {success: true};
-// })
 
 //End region
 
@@ -108,7 +81,6 @@ $(document).ready(function () {
     })
       .then(function (data) {
         anim.toggleClass("showForm");
-        sendSignUpEmail()
         setTimeout(function() {
           window.location.replace("/dashboard");
       }, 3000);
@@ -133,8 +105,4 @@ function sendUserDataToFirebase(name, number, email, password) {
     email: email,
     password: password
   });
-}
-
-function sendSignUpEmail(){
-
 }

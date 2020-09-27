@@ -1,11 +1,12 @@
 var db = require("../models");
 var passport = require("../config/passport");
+var sgMail = require("../config/sendgrid");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
     //API ROUTES TO RENDER ON DASHBOARD
-    app.get("/dashboard", function(req, res) {
-        db.Adventure.all(function(data) {
+    app.get("/dashboard", function (req, res) {
+        db.Adventure.all(function (data) {
             var handleBarsObject = {
                 adventures: data
             };
@@ -16,7 +17,7 @@ module.exports = function(app) {
 
 
     //API ROUTE TO SAVE ALL PARK INFO
-    app.post("/api/parks", function(req, res) {
+    app.post("/api/parks", function (req, res) {
         console.log("I made it to 76");
 
         db.Nationalpark.create({
@@ -34,16 +35,16 @@ module.exports = function(app) {
             console.log("parks added!");
             res.json(req);
         })
-        .catch(function (err) {
-            //res.status(401).json(err);
-            console.log("error in routes file");
-        });
+            .catch(function (err) {
+                //res.status(401).json(err);
+                console.log("error in routes file");
+            });
     });
     //API ROUTE TO SAVE ALL PARK INFO
 
-   //SIGNUP/LOGIN/LOGOUT ROUTES
+    //SIGNUP/LOGIN/LOGOUT ROUTES
     app.post("/api/signup", function (req, res) {
-        
+
         db.User.create({
             name: req.body.name,
             number: req.body.number,
@@ -51,7 +52,8 @@ module.exports = function(app) {
             password: req.body.password
         })
             .then(function () {
-                console.log("here");
+                console.log("here###########");
+                sendSignupEmail(req.body.email)
                 res.redirect(307, "/api/login");
             })
             .catch(function (err) {
@@ -87,22 +89,22 @@ module.exports = function(app) {
     // Route for getting some data about our user to be used client side
 
     //REVIEW API ROUTES
-    app.put("/api/review/:id", function(req, res) {
+    app.put("/api/review/:id", function (req, res) {
 
         // console.log(req);
         // console.log(req.body);
         db.Adventure.update(
             { review: req.body.review },
             { where: { id: req.body.id } }
-            
-        //     {
-        //     review: req.body.review,
-        // },
-        //    {
-        //     where: {
-        //         id: req.body.id
-        //     }
-        ).then(function(result) {
+
+            //     {
+            //     review: req.body.review,
+            // },
+            //    {
+            //     where: {
+            //         id: req.body.id
+            //     }
+        ).then(function (result) {
             if (result.changedRows == 0) {
                 console.log("no changes made");
                 return res.status(404).end();
@@ -116,7 +118,7 @@ module.exports = function(app) {
 
 
     //ADVENTURE API ROUTES
-    app.post("/api/trips", function(req, res) {
+    app.post("/api/trips", function (req, res) {
         db.Adventure.create({
             title: req.body.title,
             date: req.body.date,
@@ -125,7 +127,7 @@ module.exports = function(app) {
             items: req.body.items,
             completed: req.body.completed,
             review: req.body.review
-        }).then(function() {
+        }).then(function () {
             console.log("saved trip");
             res.redirect("/dashboard");
         }).catch(function (err) {
@@ -133,14 +135,14 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/trips/:id", function(req, res) {
+    app.put("/api/trips/:id", function (req, res) {
         db.Adventure.update({
             completed: req.body.completed
         }, {
             where: {
                 id: req.body.id
             }
-        }).then(function(result) {
+        }).then(function (result) {
             if (result.changedRows == 0) {
                 console.log("no changes made");
                 return res.status(404).end();
@@ -151,14 +153,45 @@ module.exports = function(app) {
         });
     });
 
-    app.delete("/api/trips/:id", function(req, res) {
+    app.delete("/api/trips/:id", function (req, res) {
         db.Adventure.destroy({
-          where: {
-            id: req.params.id
-          }
-        }).then(function(dbAdventure) {
-          res.json(dbAdventure);
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbAdventure) {
+            res.json(dbAdventure);
         });
     });
     //ADVENTURE API ROUTES
+}
+
+function sendSignupEmail(email) {
+    sgMail.setApiKey("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");
+    const msg = {
+        to: email,
+        from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
+        templateId: "d-06d5cd76524e40bfbdc2ae5cf22c2c9c"
+      };
+      //ES6
+      sgMail
+        .send(msg)
+        .then(() => {}, error => {
+          console.error(error);
+      
+          if (error.response) {
+            console.error(error.response.body)
+          }
+        });
+      //ES8
+      (async () => {
+        try {
+          await sgMail.send(msg);
+        } catch (error) {
+          console.error(error);
+      
+          if (error.response) {
+            console.error(error.response.body)
+          }
+        }
+      })();
 }

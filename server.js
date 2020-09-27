@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var sgMail = require("@sendgrid/mail");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -37,3 +38,6 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("🌎 App listening on PORT " + PORT);
   });
 });
+
+app.use(sgMail.send);
+app.use(sgMail.setApiKey);

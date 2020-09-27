@@ -1,17 +1,26 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyDtSRduHk1r_cvKsJsuvZWHRlWA_6PNHqY",
+  authDomain: "pitchit-web-app.firebaseapp.com",
+  databaseURL: "https://pitchit-web-app.firebaseio.com",
+  projectId: "pitchit-web-app",
+  storageBucket: "pitchit-web-app.appspot.com",
+  messagingSenderId: "237269682914",
+  appId: "1:237269682914:web:ca005756746dd0cf15ecbb",
+  measurementId: "G-ZEM0HMZQ0R"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var database = firebase.database();
+var messageRef = firebase.database().ref("messages")
+
 const anim = $("#anim");
 anim.toggleClass("hideForm");
 
 $(document).ready(function () {
-  // $("#formcontainer").toggleClass("hideForm");
-  // $("body").toggleClass("blueBg");
-  // setTimeout(function () {
-  //   $("body").toggleClass("removeBgColor");
-  //   $("#formcontainer").fadeIn(2000);
-  //   $("#loadingSpinner").toggleClass("hideForm")
-  // }, 3000);
 
   window.addEventListener("load", function () {
-      init();
+    init();
   });
 
   function init() {
@@ -43,6 +52,9 @@ $(document).ready(function () {
     if (!userData.name || !userData.number || !userData.email || !userData.password) {
       return;
     }
+
+    sendUserDataToFirebase(userData.name, userData.number, userData.email, userData.password);
+
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.name, userData.number, userData.email, userData.password);
     nameInput.val("");
@@ -62,13 +74,13 @@ $(document).ready(function () {
     })
       .then(function (data) {
         anim.toggleClass("showForm");
-        window.location.replace("/dashboard");
+        // window.location.replace("/dashboard");
         // If there's an error, handle it by throwing up a bootstrap alert
         console.log(name, number, email, password);
       })
       .catch(handleLoginErr);
   }
-  
+
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
@@ -76,7 +88,7 @@ $(document).ready(function () {
 });
 
 
-function loadingSpinner(){
+function loadingSpinner() {
   $("#formcontainer").toggleClass("hideForm");
   $("body").toggleClass("blueBg");
 
@@ -86,4 +98,14 @@ function loadingSpinner(){
     $("#loadingSpinner").toggleClass("hideForm")
   }, 3000);
 
+}
+
+function sendUserDataToFirebase(name, number, email, password) {
+  //save messages to firebase
+  database.ref('/users/' + userData.name).set({
+    name: userData.name,
+    number: userData.number,
+    email: userData.email,
+    password: userData.password
+  });
 }

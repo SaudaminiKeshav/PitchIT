@@ -1,8 +1,54 @@
-INSERT INTO users (name, number, email, password) 
-VALUES ("Nature Walker William","3454565667", "willinnature@email.com", "nature123");
+-- INSERT INTO users (id, name, number, email, password, `createdAt`,`updatedAt`) 
+-- VALUES (DEFAULT, "Nature Walker William","3454565667", "willinnature@email.com", "nature123", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+-- (DEFAULT, "Trail Name Legs","3454565669", "trailnamelegs@email.com", "legs456", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+-- (DEFAULT, "Pine Tree Sam","3454560588", "samsam@email.com", "pine789", "0000-00-00 00:00:00", "0000-00-00 00:00:00");
 
-INSERT INTO users (name,number, email, password) 
-VALUES ("Trail Name Legs","3454565669", "trailnamelegs@email.com", "legs456");
-
-INSERT INTO users (name,number, email, password) 
-VALUES ("Pine Tree Sam","3454560588", "samsam@email.com", "pine789");
+INSERT INTO nationalparks (`id`, `parkcode`, `name`,`state`, `image0`,`infoUrl`,`createdAt`,`updatedAt`) 
+VALUES (DEFAULT, "cany", "Canyonlands National Park", "UT", "https://www.nps.gov/common/uploads/structured_data/3C7A525D-1DD8-B71B-0B8E59D2EB39F6D0.jpg", "https://www.nps.gov/cany/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00") ,
+(DEFAULT, "cave", "Carlsbad Caverns National Park", "NM", "https://www.nps.gov/common/uploads/structured_data/3C82342F-1DD8-B71B-0BAD8438A2A16379.jpg", "https://www.nps.gov/cave/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "brca", "Bryce Canyon National Park", "UT", "https://www.nps.gov/common/uploads/structured_data/3C7F8B29-1DD8-B71B-0B5EA38E8C5E5606.jpg", "https://www.nps.gov/brca/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "arch", "Arches National Park", "UT", "https://www.nps.gov/common/uploads/structured_data/3C79850F-1DD8-B71B-0BC4A88BA85DE6B0.jpg", "https://www.nps.gov/arch/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "deva", "Death Valley National Park", "CA,NV", "https://www.nps.gov/common/uploads/structured_data/3C7EC929-1DD8-B71B-0B6F8851F7D62846.jpg", "https://www.nps.gov/deva/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "care", "Capitol Reef National Park", "UT", "https://www.nps.gov/common/uploads/structured_data/3C82E3C7-1DD8-B71B-0B4181834EE46AED.jpg", "https://www.nps.gov/care/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "grba", "Great Basin National Park", "NV", "https://www.nps.gov/common/uploads/structured_data/3C876E30-1DD8-B71B-0B6A6CDF68B4FA89.jpg", "https://www.nps.gov/grba/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "gumo", "Guadalupe Mountains National Park", "TX", "https://www.nps.gov/common/uploads/structured_data/3C825A11-1DD8-B71B-0BAAA0BDF174AA2F.jpg", "https://www.nps.gov/gumo/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "grca", "Grand Canyon National Park", "AZ", "https://www.nps.gov/common/uploads/structured_data/3C7B12D1-1DD8-B71B-0BCE0712F9CEA155.jpg", "https://www.nps.gov/grca/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "grsa", "Great Sand Dunes National Park & Preserve", "CO", "https://www.nps.gov/common/uploads/structured_data/3C7CE386-1DD8-B71B-0B14D302825B96CF.jpg", "https://www.nps.gov/grsa/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "jotr", "Joshua Tree National Park", "CA", "https://www.nps.gov/common/uploads/structured_data/3C85E84D-1DD8-B71B-0B188E7820D60F14.jpg", "https://www.nps.gov/jotr/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "lake", "Lake Mead National Recreation Area", "AZ,NV", "https://www.nps.gov/common/uploads/structured_data/3C79D292-1DD8-B71B-0B9A850B0D5AAAFC.jpg", "https://www.nps.gov/lake/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "meve", "Mesa Verde National Park", "CO", "https://www.nps.gov/common/uploads/structured_data/3C7C0089-1DD8-B71B-0BC397BA671C0616.jpg", "https://www.nps.gov/meve/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "moja", "Mojave National Preserve", "CA", "https://www.nps.gov/common/uploads/structured_data/3C87561A-1DD8-B71B-0BB71D193B42FC5A.jpg", "https://www.nps.gov/moja/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "sagu", "Saguaro National Park", "AZ", "https://www.nps.gov/common/uploads/structured_data/3C858462-1DD8-B71B-0BB499810C61332C.jpg", "https://www.nps.gov/sagu/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "zion", "Zion National Park", "UT", "https://www.nps.gov/common/uploads/structured_data/3C7EFF41-1DD8-B71B-0B50E940FE9F2658.jpg", "https://www.nps.gov/zion/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "yose", "Yosemite National Park", "CA", "https://www.nps.gov/common/uploads/structured_data/3C84C3C0-1DD8-B71B-0BFF90B64283C3D8.jpg", "https://www.nps.gov/yose/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "grsm", "Great Smoky Mountains National Park", "NC,TN", "https://www.nps.gov/common/uploads/structured_data/3C80EC37-1DD8-B71B-0B87F63E8B030D15.jpg", "https://www.nps.gov/grsm/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "whsa", "White Sands National Park", "NM", "https://www.nps.gov/common/uploads/structured_data/3C7FE691-1DD8-B71B-0B21F94DBD31A965.jpg", "https://www.nps.gov/whsa/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "mora", "Mount Rainier National Park", "WA", "https://www.nps.gov/common/uploads/structured_data/3C7C6A93-1DD8-B71B-0BA75B16C5FA3690.jpeg", "https://www.nps.gov/mora/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "olym", "Olympic National Park", "WA", "https://www.nps.gov/common/uploads/structured_data/3C7B1DB4-1DD8-B71B-0B9DFEFDD398DB71.jpg", "https://www.nps.gov/olym/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "romo", "Rocky Mountain National Park", "CO", "https://www.nps.gov/common/uploads/structured_data/3C7ECE39-1DD8-B71B-0BAA393EB3C3A995.jpg", "https://www.nps.gov/romo/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "bisc", "Biscayne National Park", "FL", "https://www.nps.gov/common/uploads/structured_data/3C870833-1DD8-B71B-0BE93D49E0DF6503.jpg", "https://www.nps.gov/bisc/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "badl", "Badlands National Park", "SD", "https://www.nps.gov/common/uploads/structured_data/3C82ED5D-1DD8-B71B-0B2F33D3B39D6D1B.jpg", "https://www.nps.gov/badl/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "crla", "Crater Lake National Park", "OR", "https://www.nps.gov/common/uploads/structured_data/3C7B23C5-1DD8-B71B-0B4F2400855714FA.jpg", "https://www.nps.gov/crla/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "chis", "Channel Islands National Park", "CA", "https://www.nps.gov/common/uploads/structured_data/3C7A70D4-1DD8-B71B-0B2979F65CAB2D50.jpg", "https://www.nps.gov/chis/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "blca", "Black Canyon Of The Gunnison National Park", "CO", "https://www.nps.gov/common/uploads/structured_data/3C8166E8-1DD8-B71B-0BDEB9A4EEEED807.jpg", "https://www.nps.gov/blca/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "cari", "Cane River Creole National Historical Park", "LA", "https://www.nps.gov/common/uploads/structured_data/3C8664C5-1DD8-B71B-0BDF39DFAA0CD777.jpg", "https://www.nps.gov/cari/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "cuva", "Cuyahoga Valley National Park", "OH", "https://www.nps.gov/common/uploads/structured_data/3C81841A-1DD8-B71B-0B1A447676517C5B.jpg", "https://www.nps.gov/cuva/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "dena", "Denali National Park & Preserve", "AK", "https://www.nps.gov/common/uploads/structured_data/3C83C9C7-1DD8-B71B-0B9B669ED961F97E.jpg", "https://www.nps.gov/dena/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "drto", "Dry Tortugas National Park", "FL", "https://www.nps.gov/common/uploads/structured_data/3C810049-1DD8-B71B-0B0040641619D4A6.jpg", "https://www.nps.gov/drto/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "ever", "Everglades National Park", "FL", "https://www.nps.gov/common/uploads/structured_data/3C8547ED-1DD8-B71B-0B596F29F0A9A60B.jpg", "https://www.nps.gov/ever/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "fowa", "Fort Washington Park", "MD", "https://www.nps.gov/common/uploads/structured_data/889ACFDE-1DD8-B71B-0B66D243B767FF29.jpg", "https://www.nps.gov/fowa/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "glac", "Glacier National Park", "MT", "https://www.nps.gov/common/uploads/structured_data/3C7FF0EB-1DD8-B71B-0BDB1379DE9714E1.jpg", "https://www.nps.gov/glac/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "gaar", "Gates Of The Arctic National Park & Preserve", "AK", "https://www.nps.gov/common/uploads/structured_data/3C7A8B6B-1DD8-B71B-0B8B89FE0C6B6F4F.jpg", "https://www.nps.gov/gaar/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "glba", "Glacier Bay National Park & Preserve", "AK", "https://www.nps.gov/common/uploads/structured_data/3C790BBF-1DD8-B71B-0B0AE92D0B9C24EB.jpg", "https://www.nps.gov/glba/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "grte", "Grand Teton National Park", "WY", "https://www.nps.gov/common/uploads/structured_data/3C7FA7B7-1DD8-B71B-0B7B45B73D1C90C3.jpg", "https://www.nps.gov/grte/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "hale", "Haleakal&#257; National Park", "HI", "https://www.nps.gov/common/uploads/structured_data/3D3323B6-1DD8-B71B-0B78ACA534C1D05E.jpg", "https://www.nps.gov/hale/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "hosp", "Hot Springs National Park", "AR", "https://www.nps.gov/common/uploads/structured_data/2417D601-FF9E-BFD8-5C6BD4375064FAD1.jpg", "https://www.nps.gov/hosp/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "isro", "Isle Royale National Park", "MI", "https://www.nps.gov/common/uploads/structured_data/3C7AC4C1-1DD8-B71B-0B8592CA6634ABEE.jpg", "https://www.nps.gov/isro/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "havo", "Hawai'i Volcanoes National Park", "HI", "https://www.nps.gov/common/uploads/structured_data/C5AEDF53-AE4A-F6DB-2FBA7BE158386C0E.jpg", "https://www.nps.gov/havo/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "katm", "Katmai National Park & Preserve", "AK", "https://www.nps.gov/common/uploads/structured_data/3C7A32DB-1DD8-B71B-0B37F66E9D0832AF.jpg", "https://www.nps.gov/katm/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "maca", "Mammoth Cave National Park", "KY", "https://www.nps.gov/common/uploads/structured_data/700F5F4C-1DD8-B71B-0BEB7EF216AFBE1D.jpg", "https://www.nps.gov/maca/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "noca", "North Cascades National Park", "WA", "https://www.nps.gov/common/uploads/structured_data/3C7A5B0D-1DD8-B71B-0B1104A95B7A2026.jpg", "https://www.nps.gov/noca/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "seki", "Sequoia & Kings Canyon National Parks", "CA", "https://www.nps.gov/common/uploads/structured_data/3C7A2835-1DD8-B71B-0B468E834049FBE4.jpg", "https://www.nps.gov/seki/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "redw", "Redwood National and State Parks", "CA", "https://www.nps.gov/common/uploads/structured_data/13FB649C-1DD8-B71B-0B50D0E826025619.jpg", "https://www.nps.gov/redw/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "pefo", "Petrified Forest National Park", "AZ", "https://www.nps.gov/common/uploads/structured_data/3C7D83C9-1DD8-B71B-0B294D0F9ABC4B94.jpg", "https://www.nps.gov/pefo/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00"),
+(DEFAULT, "thro", "Theodore Roosevelt National Park", "ND", "https://www.nps.gov/common/uploads/structured_data/3C7939C8-1DD8-B71B-0B048D7EC3812DE3.jpg", "https://www.nps.gov/thro/index.htm", "0000-00-00 00:00:00", "0000-00-00 00:00:00");

@@ -8,10 +8,9 @@
         <label for="location">National Park:</label>
         <input list="campground-list" type="text" id="location" placeholder="search...">
         <datalist id="campground-list">
-            <option>camp 1</option>
-            <option>camp 2</option>
-            <option>camp 3</option>
-            <option>camp 4</option>
+        {{#each nationalparks}}
+                <option>{{this.name}}</option>
+        {{/each}}
         </datalist>
     </div>
     <br>

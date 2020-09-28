@@ -132,7 +132,7 @@ module.exports = function (app) {
         }).then(function () {
             sendTripEmail(username, userEmail, req.body.title, req.body.date, req.body.location, req.body.campers, req.body.items, req.body.completed, req.body.review);
             console.log("saved trip");
-
+            res.redirect("/dashboard");
         }).catch(function (err) {
             console.log("error in routes file");
         });
@@ -220,7 +220,9 @@ async function sendTripEmail(username, userEmail, title, date, location, campers
             campers: campers,
             items: items,
             completed: completed,
-            review: review
+            review: review,
+            parkImgUrl: parkImgUrl,
+            parkWebUrl: parkWebUrl
         }
     }
 

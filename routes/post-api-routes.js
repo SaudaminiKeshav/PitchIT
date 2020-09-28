@@ -118,7 +118,9 @@ module.exports = function(app) {
             campers: req.body.campers,
             items: req.body.items,
             completed: req.body.completed,
-            review: req.body.review
+            review: req.body.review,
+            parkImgUrl: req.body.parkImgUrl,
+            parkWebUrl: req.body.parkWebUrl
         }).then(function() {
             console.log("saved trip");
             res.redirect("/dashboard");

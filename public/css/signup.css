@@ -15,7 +15,7 @@ display: block;
 /* ===== End sign-up form ===== */
 
 /* ----- Loading Animation ----- */
-.container {
+/* .container {
     height: 85vmin;
     width: 85vmin;
     border-radius: 100%;
@@ -416,7 +416,7 @@ display: block;
 }
 
 .camp__tent {
-    /* border: 1vmin solid red; */
+    border: 1vmin solid red;
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -524,7 +524,7 @@ display: block;
 .soil2 {
     width: 22vmin;
     bottom: 9.3vmin;
-}
+} */
 
 /* ===== End loading animation ===== */
 

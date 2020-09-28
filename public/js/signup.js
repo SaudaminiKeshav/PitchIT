@@ -1,7 +1,8 @@
 const anim = $("#anim");
 anim.toggleClass("hideForm");
-
+$("#formcontainer").toggleClass("hideForm");
 $(document).ready(function () {
+
   // $("#formcontainer").toggleClass("hideForm");
   // $("body").toggleClass("blueBg");
   // setTimeout(function () {
@@ -11,15 +12,20 @@ $(document).ready(function () {
   // }, 3000);
 
   window.addEventListener("load", function () {
-      init();
+    // animation();
+    init();
   });
 
+  // function animation() {
+  //   setTimeout(function () {
+  //     $(".day").fadeOut(1000);
+  //   }, 500);
+  // };
+
   function init() {
-    $("#formcontainer").toggleClass("hideForm");
     setTimeout(function () {
-      $("#formcontainer").fadeIn(1500);
-      $(".day").toggleClass("hideForm")
-    }, 2000);
+      $("#formcontainer").fadeIn(1000);
+    }, 250);
   };
 
   // Getting references to our form and input

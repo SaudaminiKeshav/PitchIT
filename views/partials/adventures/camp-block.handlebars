@@ -1,145 +1,203 @@
-
 {{#if completed}}
 
-<div class="col-md-4 view-trip-card card">
-  <div class="card-body">
-    <h3 class="trip-title">{{ title }}</h3>
+  <div class="col-md-4 view-trip-card card">
+    <div class="card-body">
+      <h3 class="trip-title">{{ title }}</h3>
       <p>DATES: {{ date }}</p>
       <p>LOCATION: {{ location }}</p>
       <p>CAMPERS: {{ campers }}</p>
-    <button type="button" class="update-trip btn btn-outline-success" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
-      Update
-    </button>
-    <button type="button" class="complete-trip-btn btn btn-outline-success" data-toggle="modal" data-target="#exampleModal{{id}}">
-      Complete Trip
-    </button>
-    <button type="button" class="view-trip-btn btn btn-outline-success" data-id="{{id}}" data-toggle="modal" data-target="#viewTrip{{id}}">
-      View
-    </button>
-    <button type="button" class="delete-trip btn btn-outline-success" data-id="{{this.id}}">Delete</button>
-  </div>
-</div>
 
-<!--View Trip-->
-<div class="modal fade" id="viewTrip{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+      {{!-- <button type="button" class="update-trip btn btn-outline-success" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
+          Update
+        </button> --}}
+      <button type="button" class="complete-trip-btn btn btn-outline-success" data-toggle="modal"
+        data-target="#exampleModal{{id}}">
+        Complete Trip
+      </button>
+      <button type="button" class="view-trip-btn btn btn-outline-success" data-id="{{id}}" data-toggle="modal"
+        data-target="#viewTrip{{id}}">
+        View
+      </button>
+      <button type="button" class="delete-trip btn btn-outline-success" data-id="{{this.id}}">Delete</button>
+    </div>
+  </div>
+
+  <!--View Current Trip-->
+  <div class="modal fade" id="viewTrip{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="row modal-body">
-              <div class="col-md-6 form-group">
-                  <p class="trip-ptags">Dates: </p><p>{{ date }}</p>
-                  <p class="trip-ptags">Location: </p><p>{{ location }}</p>
-                  <p class="trip-ptags">Campers: </p><p>{{ campers }}</p>
-                  <p class="trip-ptags">Backpack:</p><p class="backpack">{{ items }}</p>
-              </div>
-              <div class="col-md-6 view-image">
-                <img src="https://www.iconfinder.com/data/icons/scenarium-vol-3-1/128/036_backpack_bag_camping_travel_school_rucksack-512.png" alt="">
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
-          </div>
-      </div>
-  </div>
-</div>
-
-<!--Prompt for Review-->
-<!-- Modal -->
-<div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Review Trip?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Would you like to write a review for your trip?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary no-btn" data-id="{{id}}" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary writeTxtBtn" data-id="{{id}}" data-toggle="modal" data-target="#exampleModalCenter{{id}}" data-dismiss="modal">
-              Yes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Prompt for Review-->
-
-<!-- Review Modal -->
-    <div class="modal fade" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Write your review:</label>
-                        <textarea class="form-control review-text{{id}}" id="exampleFormControlTextarea1" rows="3" maxlength="250"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-review" data-dismiss="modal" data-id="{{id}}">Save changes</button>
-
-                </div>
-            </div>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="row modal-body">
+          <div class="col-md-6 form-group">
+            <p class="trip-ptags">Dates: </p>
+            <p>{{ date }}</p>
+            <p class="trip-ptags">Location: </p>
+            <p>{{ location }}</p>
+            <p class="trip-ptags">Campers: </p>
+            <p>{{ campers }}</p>
+            <p class="trip-ptags">Backpack:</p>
+            <p class="backpack">{{ items }}</p>
+            <p class="trip-ptags"><a href="{{ parkWebUrl }}" target="_blank">More Info</a></p>
+          </div>
+          <div class="col-md-6 view-image">
+            <img
+              id="park-img"
+              src="{{ parkImgUrl }}"
+              alt="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
-<!-- Review Modal -->
+  </div>
+
+  <!--Prompt for Review-->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Review Trip?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Would you like to write a review for your trip?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary no-btn" data-id="{{id}}" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary writeTxtBtn" data-id="{{id}}" data-toggle="modal"
+            data-target="#exampleModalCenter{{id}}" data-dismiss="modal">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Prompt for Review-->
+
+  <!-- Review Modal -->
+  <div class="modal fade" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Write your review:</label>
+            <textarea class="form-control review-text{{id}}" id="exampleFormControlTextarea1" rows="3"
+              maxlength="250"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save-review" data-dismiss="modal" data-id="{{id}}">Save
+            changes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Review Modal -->
 
 {{/if}}
 
 
 {{#unless completed}}
-<!-- Button trigger modal -->
-<div class="col-md-4 view-trip-card card">
-  <div class="card-body">
-    <h3 class="trip-title">{{ title }}</h3>
-    <p>DATES: {{ date }}</p>
-    <p>LOCATION: {{ location }}</p>
-    <p>CAMPERS: {{ campers }}</p>
-    <p>REVIEW: {{ review }}</p>
+  <!-- Button trigger modal -->
+  <div class="col-md-4 view-trip-card card">
+    <div class="card-body">
+      <h3 class="trip-title">{{ title }}</h3>
+      <p>DATES: {{ date }}</p>
+      <p>LOCATION: {{ location }}</p>
+      <p>CAMPERS: {{ campers }}</p>
+      <p>REVIEW: {{ review }}</p>
 
-    <button type="button" class="view-trip-btn btn btn-outline-success" data-id="{{id}}" data-toggle="modal" data-target="#viewTrip{{id}}">
-      View
-    </button>
-    <button type="button" class="delete-trip btn btn-outline-success" data-id="{{this.id}}">Delete</button>
+      <button type="button" class="view-trip-btn btn btn-outline-success" data-id="{{id}}" data-toggle="modal"
+        data-target="#viewTrip{{id}}">
+        View
+      </button>
+      <button type="button" class="delete-trip btn btn-outline-success" data-id="{{this.id}}">Delete</button>
+    </div>
   </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-     <div class="modal-content">
-         <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-             </button>
-         </div>
-         <div class="modal-body">
-             <div class="form-group">
-                 <label for="exampleFormControlTextarea1">Write your review:</label>
-                 <textarea class="form-control review-text{{id}}" id="exampleFormControlTextarea1" rows="3" maxlength="250"></textarea>
-             </div>
-         </div>
-         <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <button type="button" class="btn btn-primary save-review" data-dismiss="modal" data-id="{{id}}">Save changes</button>
-         </div>
-     </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Write your review:</label>
+            <textarea class="form-control review-text{{id}}" id="exampleFormControlTextarea1" rows="3"
+              maxlength="250"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save-review" data-dismiss="modal" data-id="{{id}}">Save
+            changes</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!--View Completed Trip-->
+  <div class="modal fade" id="viewTrip{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="row modal-body">
+          <div class="col-md-6 form-group">
+            <p class="trip-ptags">Dates: </p>
+            <p>{{ date }}</p>
+            <p class="trip-ptags">Location: </p>
+            <p>{{ location }}</p>
+            <p class="trip-ptags">Campers: </p>
+            <p>{{ campers }}</p>
+            <p class="trip-ptags">Backpack:</p>
+            <p class="backpack">{{ items }}</p>
+            <p class="trip-ptags">Review: </p>
+            <p>{{ review }}</p>
+            <p class="trip-ptags"><a href="{{ parkWebUrl }}" target="_blank">More Info</a></p>
+          </div>
+          <div class="col-md-6 view-image">
+            <img
+              id="park-img"
+              src="{{ parkImgUrl }}"
+              alt="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {{/unless}}

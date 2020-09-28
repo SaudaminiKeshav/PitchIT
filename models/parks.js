@@ -1,6 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
 
   var Nationalpark = sequelize.define("Nationalpark", {
+    parkcode: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,37 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       len: [1]
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
-    price: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
     image0: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
-    image1: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
-    image2: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
-    image3: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
-    },
-    weatherInfo: {
       type: DataTypes.STRING,
       allowNull: true,
       len: [1]

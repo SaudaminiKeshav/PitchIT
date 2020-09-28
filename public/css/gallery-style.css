@@ -1,7 +1,8 @@
 /* ---------- Gallery ---------- */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: rgba(37, 37, 37, 0.794) !important;
+    /* background-color: rgba(37, 37, 37, 0.794) !important; */
+    background-image: linear-gradient(to bottom left, rgb(16, 97, 13), rgb(158, 233, 140), rgb(255, 255, 255));
 }
 
 .title-container {
@@ -34,6 +35,8 @@ body {
 .topnav {
     background-color: #333;
     overflow: hidden;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .topnav a {
@@ -55,16 +58,13 @@ body {
 
 img {
     vertical-align: middle;
-    max-height: 80%;
-    min-height: 80%;
+    height: 80%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
 .container {
     position: relative;
-    margin-left: 200px;
-    margin-right: 200px;
 }
 
 .numbertext {

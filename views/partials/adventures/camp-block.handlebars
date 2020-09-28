@@ -4,9 +4,9 @@
 <div class="col-md-4 view-trip-card card">
   <div class="card-body">
     <h3 class="trip-title">{{ title }}</h3>
-    <p class="trip-ptags">DATES: {{ date }}</p>
-    <p class="trip-ptags">LOCATION: {{ location }}</p>
-    <p class="trip-ptags">CAMPERS: {{ campers }}</p>
+      <p>DATES: {{ date }}</p>
+      <p>LOCATION: {{ location }}</p>
+      <p>CAMPERS: {{ campers }}</p>
     <button type="button" class="update-trip btn btn-outline-success" data-id="{{id}}" data-updateTrip="{{updateTrip}}">
       Update
     </button>
@@ -30,12 +30,15 @@
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
-              <div class="form-group">
-                  <p class="trip-ptags">Dates: {{ date }}</p>
-                  <p class="trip-ptags">Location: {{ location }}</p>
-                  <p class="trip-ptags">Campers: {{ campers }}</p>
-                  <p class="trip-ptags">Backpack: {{ items }}</p>
+          <div class="row modal-body">
+              <div class="col-md-6 form-group">
+                  <p class="trip-ptags">Dates: </p><p>{{ date }}</p>
+                  <p class="trip-ptags">Location: </p><p>{{ location }}</p>
+                  <p class="trip-ptags">Campers: </p><p>{{ campers }}</p>
+                  <p class="trip-ptags">Backpack:</p><p class="backpack">{{ items }}</p>
+              </div>
+              <div class="col-md-6 view-image">
+                <img src="https://www.iconfinder.com/data/icons/scenarium-vol-3-1/128/036_backpack_bag_camping_travel_school_rucksack-512.png" alt="">
               </div>
           </div>
           <div class="modal-footer">
@@ -104,10 +107,10 @@
 <div class="col-md-4 view-trip-card card">
   <div class="card-body">
     <h3 class="trip-title">{{ title }}</h3>
-    <p class="trip-ptags">DATES: {{ date }}</p>
-    <p class="trip-ptags">LOCATION: {{ location }}</p>
-    <p class="trip-ptags">CAMPERS: {{ campers }}</p>
-    <p class="trip-ptags">REVIEW: {{ review }}</p>
+    <p>DATES: {{ date }}</p>
+    <p>LOCATION: {{ location }}</p>
+    <p>CAMPERS: {{ campers }}</p>
+    <p>REVIEW: {{ review }}</p>
 
     <button type="button" class="view-trip-btn btn btn-outline-success" data-id="{{id}}" data-toggle="modal" data-target="#viewTrip{{id}}">
       View

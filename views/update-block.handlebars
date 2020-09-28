@@ -1,0 +1,43 @@
+<form id="create-adventure">
+    <div>
+        <label for="title">Adventure Name:</label>
+        <input type="text" id="title" placeholder="{{ title }}">
+    </div>
+    <br>
+    <div>
+        <label for="location">National Park:</label>
+        <input list="campground-list" type="text" id="location" placeholder="{{ location }}">
+        <datalist id="campground-list">
+            <option>camp 1</option>
+            <option>camp 2</option>
+            <option>camp 3</option>
+            <option>camp 4</option>
+        </datalist>
+    </div>
+    <br>
+    <div>
+        <label for="date">Dates:</label>
+        <input type="text" id="date" placeholder="{{ date }}">
+    </div>
+    <br>
+    <div>
+        <label for="campers">Additional Camper's Username:</label>
+        <input list="campers-list" type="text" id="campers" placeholder="{{ campers }}">
+        <datalist id="campers-list">
+            <option>Juliana</option>
+            <option>Corey</option>
+            <option>Armando</option>
+            <option>Damini</option>
+        </datalist>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
+            <i class="material-icons">add</i>
+        </button>
+    </div>
+    <br>
+    <div class="form-group supply-list">
+        <label for="exampleFormControlTextarea1">Backpack:</label>
+        <textarea class="form-control" id="items" rows="3" placeholder="{{ items }}"></textarea>
+    </div>
+
+    <a class="save-trip" href="/dashboard">Save</a>
+</form>

@@ -50,9 +50,9 @@ module.exports = function(app) {
 
         hbsObject = JSON.parse(hbsObject.adventures);
         newData = JSON.stringify(data);
-        console.log("origial data", data);
+        //console.log("origial data", data);
         thirdData = JSON.parse(newData); //produces all data
-        console.log("third", thirdData); 
+        //console.log("third", thirdData);
 
         if (hbsObject.length == 0) {
           console.log("nothing");
@@ -60,7 +60,7 @@ module.exports = function(app) {
           hbsObject = {
             thirdData
           };
-          console.log("object", hbsObject);
+          //console.log("object", hbsObject);
         }
         res.render("index", hbsObject);
     });

@@ -7,15 +7,6 @@ display: none;
 display: block;
 }
 
-.blueBg{
-background-color: #519FD6;
-}
-
-.removeBgColor{
-transition:  2.5s ease;
-background-color: white;
-}
-
 .signup {
     border-style: outset;
     padding: 12px;
@@ -536,3 +527,4 @@ background-color: white;
 }
 
 /* ===== End loading animation ===== */
+

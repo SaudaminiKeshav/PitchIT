@@ -1,17 +1,33 @@
+//Region Firebase setup
+
+// Initialize Firebase
+var firebaseConfig = {
+  apiKey: "AIzaSyAwSYf_hueKmdVUBUaNwdf_jAyEYS7OODw",
+  authDomain: "pitch-it-firebase.firebaseapp.com",
+  databaseURL: "https://pitch-it-firebase.firebaseio.com",
+  projectId: "pitch-it-firebase",
+  storageBucket: "pitch-it-firebase.appspot.com",
+  messagingSenderId: "603643031651",
+  appId: "1:603643031651:web:807d273ed56cc196d98856",
+  measurementId: "G-T3G428HX8G"
+};
+
+//*Firebase Cloud storage setup*
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var database = firebase.database();
+var messageRef = firebase.database().ref("messages")
+
+//End region
+
+
 const anim = $("#anim");
 anim.toggleClass("hideForm");
 
 $(document).ready(function () {
-  // $("#formcontainer").toggleClass("hideForm");
-  // $("body").toggleClass("blueBg");
-  // setTimeout(function () {
-  //   $("body").toggleClass("removeBgColor");
-  //   $("#formcontainer").fadeIn(2000);
-  //   $("#loadingSpinner").toggleClass("hideForm")
-  // }, 3000);
 
   window.addEventListener("load", function () {
-      init();
+    init();
   });
 
   function init() {
@@ -44,6 +60,8 @@ $(document).ready(function () {
       return;
     }
 
+    sendUserDataToFirebase(userData.name, userData.number, userData.email, userData.password);
+
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.name, userData.number, userData.email, userData.password);
     nameInput.val("");
@@ -63,16 +81,28 @@ $(document).ready(function () {
     })
       .then(function (data) {
         anim.toggleClass("showForm");
-        window.location.replace("/dashboard");
+        setTimeout(function() {
+          window.location.replace("/dashboard");
+      }, 3000);
+        
         // If there's an error, handle it by throwing up a bootstrap alert
         console.log(name, number, email, password);
       })
       .catch(handleLoginErr);
   }
-  
 
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
 });
+
+function sendUserDataToFirebase(name, number, email, password) {
+  //save messages to firebase
+  database.ref('/users/' + name).set({
+    name: name,
+    number: number,
+    email: email,
+    password: password
+  });
+}

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link rel="stylesheet" href="css/signup.css" >
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 
 <body>
@@ -43,12 +43,15 @@
                         <span class="sr-only">Error:</span> <span class="msg"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-default">Sign Up</button>
+                    <div style="display: flex;">
+                        <button type="submit" class="btn btn-default" style="width: 75px; height: 45px;">Sign Up</button>
+                        <lottie-player id="anim" src="https://assets10.lottiefiles.com/packages/lf20_yWMBkv.json"
+                            background="transparent" speed="1" style="width: 50px; height: 45px;" autoplay>
+                        </lottie-player>
+                        <br><br>
+                    </div>
+
                 </form>
-                <div>
-                    <lottie-player id="anim" src="https://assets5.lottiefiles.com/packages/lf20_neDzQu.json"
-                        background="transparent" speed="1" style="width: 50px; height: 50px;" autoplay></lottie-player>
-                </div>
                 <br />
                 <p>Or <a href="/login">Login</a></p>
 
@@ -80,7 +83,7 @@
                 </div>
             </div>
             <div class="camp-scene">
-                <div class="camp__mountains">   
+                <div class="camp__mountains">
                     <div class="mountain3">
                         <div class="mountain4"></div>
                     </div>
@@ -98,7 +101,7 @@
                         </div>
                         <div class="tree-bottom">
                             <div class="tree-bottom-s"></div>
-    
+
                         </div>
                         <div class="tree-bark"></div>
                     </div>
@@ -136,7 +139,7 @@
                         <div class="tree-mid">
                             <div class="tree-mid-s"></div>
                         </div>
-    
+
                         <div class="tree-bottom">
                             <div class="tree-bottom-s"></div>
                         </div>
@@ -172,27 +175,32 @@
                     <div class="grass2"></div>
                     <div class="grass3"></div>
                     <div class="grass4"></div>
-    
+
                     <div class="river1"></div>
                     <div class="river2"></div>
                     <div class="river3"></div>
-    
+
                     <div class="soil1"></div>
                     <div class="soil2"></div>
                 </div>
             </div>
         </div>
 
-        <!-- <img src="flyingballloader.gif" id="loadingSpinner" style="position: fixed; top: 50%;left: 50%; transform: translate(-50%, -50%);"> -->
-
-            
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/signup.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.3/lottie.min.js"
             integrity="sha512-35O/v2b9y+gtxy3HK+G3Ah60g1hGfrxv67nL6CJ/T56easDKE2TAukzxW+/WOLqyGE7cBg0FR2KhiTJYs+FKrw=="
             crossorigin="anonymous"></script>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+
+        <!-- <script type="text/javascript" src="js/nationalparks.js"></script> -->
+
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+
+        <script type="text/javascript" src="js/signup.js"></script>
 </body>
 </html>

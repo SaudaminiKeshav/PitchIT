@@ -320,6 +320,11 @@ img{
     margin-right: 20px;
 }
 
+.added-campers {
+    list-style: none;
+    padding: 10px;
+}
+
 .submit-camp-btn {
     width: 20%
 }

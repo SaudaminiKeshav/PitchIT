@@ -2,10 +2,11 @@
     <nav class="main-nav">
         <ul class="main-menu">
             <li class="brand nav-link">
-                <img src="img/tent.png" alt="" class='logo' width='50px'>  
+                <img src="img/campfire.png" alt="" class='logo' width='50px'>  
             </li>
             <li class="nav-link nav-btn">
                 <a href="/create"><button type="button" class="btn btn-outline-success">+ Plan Your Adventure</button></a>
+                <a href="../gallery.html"><button type="button" class="gallery-btn btn btn-outline-success">Gallery</button></a>
             </li>
         </ul>
 
@@ -27,20 +28,20 @@
         <div class="boxes">
             <div class="box">
                 <img src="img/camper.png" alt="" width='50'>
-                <h3>Invite Friends</h3>
+                <h3 style="font-weight: 700;">Invite Friends</h3>
                 <p>Plan an adventure to your favorite spot or discover a new one that's right for you.</p>
             </div>
 
             <div class="box">
                 <img src="https://image.flaticon.com/icons/svg/2977/2977922.svg" alt="" width='50'>
-                <h3>Day Passes</h3>
+                <h3 style="font-weight: 700;">Day Passes</h3>
                 <p>View up-to-date prices for day and annual passes into National Parks.</p>
             </div>
 
             <div class="box">
                 <img src="img/star.png" alt="" width='50'>
-                <h3>Rate</h3>
-                <p>Rate your adventure to let others know how you enjoyed that spot and give recommendations.</p>
+                <h3 style="font-weight: 700;">Rate Your Adventures</h3>
+                <p>Rate your adventure to let others know how you enjoyed the park and give recommendations.</p>
             </div>
         </div>
     </div>
@@ -48,25 +49,20 @@
 
 <div class="trip-card current-trips">
     <h2 class="card-title">&#9657;&#9657; Current Adventures &#9667;&#9667;</h2>
-
-    {{#each trips}}
+    {{#each thirdData}}
         {{#unless completed}}
-            <ul class="trip-ul"></ul>
-                {{> trips/camp-block completed=true}}
-            </ul>
+            {{> adventures/camp-block completed=true}}
         {{/unless}}
     {{/each}}
 </div>
 
+
 <br><br>
 <div class="trip-card completed-trips">
     <h2 class="card-title">&#9657;&#9657; Completed Adventures &#9667;&#9667;</h2>
-
-    {{#each trips}}
+    {{#each thirdData}}
         {{#if completed}}
-            <ul class="trip-ul"></ul>
-                {{> trips/camp-block completed=false}}
-            </ul>
+            {{> adventures/camp-block completed=false}}
         {{/if}}
     {{/each}}
 </div>

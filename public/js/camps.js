@@ -1,16 +1,33 @@
+
 $(function() {
-  // This is for the submit button to pupulate the new camping trip
+  
+  //Event listener for add people button on create trip form
+  $(".add-btn").on("click", function(event) {
+      event.preventDefault();
+    
+      let newCamper = $("#campers").val().trim();
+      let li = $("<li>");
+
+      li.text(newCamper);
+      $(".added-campers").append(li);
+      $("#campers").val("");
+  });
+  
+  
+  // This is for the submit button to populate the new camping trip
   $(".submit-trip").on("click", function(event) {
+    console.log("clicked submit trip");
     event.preventDefault();
 
     // Values to create a new trip
     var newTrip = {
       title: $("#title").val().trim(),
-      location: $("#location").val().trim(),
       date: $("#date").val().trim(),
+      location: $("#location").val().trim(),
       campers: $("#campers").val().trim(),
       items: $("#items").val(),
-      completed: 0
+      completed: 0,
+      review: ""
     };
 
     // Post new trip
@@ -18,14 +35,14 @@ $(function() {
       type: "POST",
       data: newTrip
     }).then(
-      function() {
+      function () {
         console.log("created new trip");
-        location.reload();
+        window.location.replace("/dashboard");
       });
   });
 
   // Button inside the camping trip card to update it
-  $(".update-trip").on("click", function(event) {
+  $(".update-trip").on("click", function (event) {
     var id = $(this).data("id");
     var updateTrip = $(this).data("completed");
 
@@ -37,39 +54,39 @@ $(function() {
       type: "PUT",
       data: updateTripState
     }).then(
-      function() {
+      function () {
         console.log("changed state to", updateTrip);
         location.reload();
       });
   });
 
-    // Button inside the camping trip card to delete it
-  $(".delete-trip").on("click", function(event) {
+  // Button inside the camping trip card to delete it
+  $(".delete-trip").on("click", function (event) {
     var id = $(this).data("id");
 
     $.ajax("/api/trips/" + id, {
-        type: "DELETE"
-    }).then(function() {
-        console.log("deleted trip", id);
-        location.reload();
+      type: "DELETE"
+    }).then(function () {
+      console.log("deleted trip", id);
+      location.reload();
     });
   });
 });
 
 // Scroll to top of page button click
-$(window).scroll(function() {
+$(window).scroll(function () {
   var height = $(window).scrollTop();
   if (height > 100) {
-      $('#back2Top').fadeIn();
+    $('#back2Top').fadeIn();
   } else {
-      $('#back2Top').fadeOut();
+    $('#back2Top').fadeOut();
   }
 });
-$(document).ready(function() {
-  $("#back2Top").click(function(event) {
-      event.preventDefault();
-      $("html, body").animate({ scrollTop: 0 }, "slow");
-      return false;
+$(document).ready(function () {
+  $("#back2Top").click(function (event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
   });
 
 });

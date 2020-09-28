@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var sgMail = require("@sendgrid/mail");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -13,9 +14,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 var exphbs = require("express-handlebars");
+var Handlebars = require('handlebars');
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine('handlebars', exphbs({
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+
+//app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // We need to use sessions to keep track of our user's login status
@@ -31,3 +38,6 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("🌎 App listening on PORT " + PORT);
   });
 });
+
+app.use(sgMail.send);
+app.use(sgMail.setApiKey);

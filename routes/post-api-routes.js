@@ -16,23 +16,23 @@ module.exports = function(app) {
 
 
     //API ROUTE TO SAVE ALL PARK INFO
-    app.post("/api/parks", function(req, res) {
-        console.log(req.body);
-        db.Nationalpark.create({
-            parkcode: req.body.parkcode,
-            name: req.body.name,
-            state: req.body.state,
-            image0: req.body.image0,
-            infoUrl: req.body.infoUrl
-        }).then(function () {
-            console.log("park added to db!");
-            //res.json(req);
-        })
-        .catch(function (err) {
-            //res.status(401).json(err);
-            console.log("error in routes file");
-        });
-    });
+    // app.post("/api/parks", function(req, res) {
+    //     console.log(req.body);
+    //     db.Nationalpark.create({
+    //         parkcode: req.body.parkcode,
+    //         name: req.body.name,
+    //         state: req.body.state,
+    //         image0: req.body.image0,
+    //         infoUrl: req.body.infoUrl
+    //     }).then(function () {
+    //         console.log("park added to db!");
+    //         //res.json(req);
+    //     })
+    //     .catch(function (err) {
+    //         //res.status(401).json(err);
+    //         console.log("error in routes file");
+    //     });
+    // });
     //API ROUTE TO SAVE ALL PARK INFO
 
    //SIGNUP/LOGIN/LOGOUT ROUTES

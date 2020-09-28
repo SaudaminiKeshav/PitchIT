@@ -8,9 +8,49 @@
         <label for="location">National Park:</label>
         <input list="campground-list" type="text" id="location" placeholder="search...">
         <datalist id="campground-list">
-        {{#each nationalparks}}
-                <option>{{this.name}}</option>
-        {{/each}}
+          <option>Arches National Park</option>
+          <option>Badlands National Park</option>
+          <option>Biscayne National Park</option>
+          <option>Black Canyon Of The Gunnison National Park</option>
+          <option>Bryce Canyon National Park</option>
+          <option>Cane River Creole National Historical Park</option>
+          <option>Canyonlands National Park</option>
+          <option>Capitol Reef National Park</option>
+          <option>Carlsbad Caverns National Park</option>
+          <option>Channel Islands National Park</option>
+          <option>Crater Lake National Park</option>
+          <option>Cuyahoga Valley National Park</option>
+          <option>Denali National Park and Preserve</option>
+          <option>Dry Tortugas National Park</option>
+          <option>Everglades National Park</option>
+          <option>Fort Washington Park</option>
+          <option>Gates Of The Arctic National Park and Preserve</option>
+          <option>Grand Teton National Park</option>
+          <option>Glacier National Park</option>
+          <option>Glacier Bay National Park and Preserve</option>
+          <option>Grand Canyon National Park</option>
+          <option>Great Sand Dunes National Park and Preserve</option>
+          <option>Great Smoky Mountains National Park</option>
+          <option>Guadalupe Mountains National Park</option>
+          <option>Haleakal National Park</option>
+          <option>Hawai'i Volcanoes National Park</option>
+          <option>Isle Royale National Park</option>
+          <option>Joshua Tree National Park</option>
+          <option>Katmai National Park and Preserve</option>
+          <option>Kenai Fjords National Park</option>
+          <option>Lake Mead National Recreation Area</option>
+          <option>Mammoth Cave National Park</option>
+          <option>Mesa Verde National Park</option>
+          <option>Mojave National Preserve</option>
+          <option>North Cascades National Park</option>
+          <option>Petrified Forest National Park</option>
+          <option>Redwood National and State Parks</option>
+          <option>Sequoia and Kings Canyon National Parks</option>
+          <option>Saguaro National Park</option>
+          <option>Theodore Roosevelt National Park</option>
+          <option>White Sands National Park</option>
+          <option>Yosemite National Park</option>
+          <option>Zion National Park</option>
         </datalist>
     </div>
     <br>
@@ -23,10 +63,13 @@
         <label for="campers">Additional Camper's Username:</label>
         <input list="campers-list" type="text" id="campers">
         <datalist id="campers-list">
-            <option>Juliana</option>
+            {{!-- <option>Juliana</option>
             <option>Corey</option>
             <option>Armando</option>
-            <option>Damini</option>
+            <option>Damini</option> --}}
+            {{#each user}}
+                <option>{{this.name}}</option>
+            {{/each}}
         </datalist>
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
             <i class="material-icons">add</i>

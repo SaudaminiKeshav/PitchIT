@@ -1,151 +1,97 @@
 <form id="create-adventure">
-    <div>
-        <label for="title">Adventure Name:</label>
-        <input type="text" id="title">
-    </div>
-    <br>
-    <div>
-        <label for="location">National Park:</label>
-        <input list="campground-list" type="text" id="location" placeholder="search...">
-        <datalist id="campground-list">
-          <option>Arches National Park</option>
-          <option>Badlands National Park</option>
-          <option>Biscayne National Park</option>
-          <option>Black Canyon Of The Gunnison National Park</option>
-          <option>Bryce Canyon National Park</option>
-          <option>Cane River Creole National Historical Park</option>
-          <option>Canyonlands National Park</option>
-          <option>Capitol Reef National Park</option>
-          <option>Carlsbad Caverns National Park</option>
-          <option>Channel Islands National Park</option>
-          <option>Crater Lake National Park</option>
-          <option>Cuyahoga Valley National Park</option>
-          <option>Denali National Park and Preserve</option>
-          <option>Dry Tortugas National Park</option>
-          <option>Everglades National Park</option>
-          <option>Fort Washington Park</option>
-          <option>Gates Of The Arctic National Park and Preserve</option>
-          <option>Grand Teton National Park</option>
-          <option>Glacier National Park</option>
-          <option>Glacier Bay National Park and Preserve</option>
-          <option>Grand Canyon National Park</option>
-          <option>Great Sand Dunes National Park and Preserve</option>
-          <option>Great Smoky Mountains National Park</option>
-          <option>Guadalupe Mountains National Park</option>
-          <option>Haleakal National Park</option>
-          <option>Hawai'i Volcanoes National Park</option>
-          <option>Isle Royale National Park</option>
-          <option>Joshua Tree National Park</option>
-          <option>Katmai National Park and Preserve</option>
-          <option>Kenai Fjords National Park</option>
-          <option>Lake Mead National Recreation Area</option>
-          <option>Mammoth Cave National Park</option>
-          <option>Mesa Verde National Park</option>
-          <option>Mojave National Preserve</option>
-          <option>North Cascades National Park</option>
-          <option>Petrified Forest National Park</option>
-          <option>Redwood National and State Parks</option>
-          <option>Sequoia and Kings Canyon National Parks</option>
-          <option>Saguaro National Park</option>
-          <option>Theodore Roosevelt National Park</option>
-          <option>White Sands National Park</option>
-          <option>Yosemite National Park</option>
-          <option>Zion National Park</option>
-        </datalist>
-    </div>
-    <br>
-    <div>
-        <label for="date">Dates:</label>
-        <input type="text" id="date" placeholder="MM/DD/YYYY - MM/DD/YYYY">
-    </div>
-    <br>
-    <div>
-        <label for="campers">Additional Camper's Username:</label>
-        <input list="campers-list" type="text" id="campers">
-        <datalist id="campers-list">
-            {{!-- <option>Juliana</option>
-            <option>Corey</option>
-            <option>Armando</option>
-            <option>Damini</option> --}}
-            {{#each user}}
-                <option>{{this.name}}</option>
-            {{/each}}
-        </datalist>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
-            <i class="material-icons">add</i>
-        </button>
-    </div>
-    <br>
-    <div class="form-group supply-list">
-        <label for="exampleFormControlTextarea1">Backpack:</label>
-        <textarea class="form-control" id="items" rows="3"></textarea>
-    </div>
+  <div>
+    <label for="title">Adventure Name:</label>
+    <input type="text" id="title">
+  </div>
+  <br>
+  <div>
+    <label for="location">National Park:</label>
+    <input list="campground-list" type="text" id="location" placeholder="search...">
+    <datalist id="campground-list">
+      <option>Arches National Park</option>
+      <option>Badlands National Park</option>
+      <option>Biscayne National Park</option>
+      <option>Black Canyon Of The Gunnison National Park</option>
+      <option>Bryce Canyon National Park</option>
+      <option>Cane River Creole National Historical Park</option>
+      <option>Canyonlands National Park</option>
+      <option>Capitol Reef National Park</option>
+      <option>Carlsbad Caverns National Park</option>
+      <option>Channel Islands National Park</option>
+      <option>Crater Lake National Park</option>
+      <option>Cuyahoga Valley National Park</option>
+      <option>Denali National Park and Preserve</option>
+      <option>Dry Tortugas National Park</option>
+      <option>Everglades National Park</option>
+      <option>Fort Washington Park</option>
+      <option>Gates Of The Arctic National Park and Preserve</option>
+      <option>Grand Teton National Park</option>
+      <option>Glacier National Park</option>
+      <option>Glacier Bay National Park and Preserve</option>
+      <option>Grand Canyon National Park</option>
+      <option>Great Sand Dunes National Park and Preserve</option>
+      <option>Great Smoky Mountains National Park</option>
+      <option>Guadalupe Mountains National Park</option>
+      <option>Haleakal National Park</option>
+      <option>Hawai'i Volcanoes National Park</option>
+      <option>Isle Royale National Park</option>
+      <option>Joshua Tree National Park</option>
+      <option>Katmai National Park and Preserve</option>
+      <option>Kenai Fjords National Park</option>
+      <option>Lake Mead National Recreation Area</option>
+      <option>Mammoth Cave National Park</option>
+      <option>Mesa Verde National Park</option>
+      <option>Mojave National Preserve</option>
+      <option>North Cascades National Park</option>
+      <option>Petrified Forest National Park</option>
+      <option>Redwood National and State Parks</option>
+      <option>Sequoia and Kings Canyon National Parks</option>
+      <option>Saguaro National Park</option>
+      <option>Theodore Roosevelt National Park</option>
+      <option>White Sands National Park</option>
+      <option>Yosemite National Park</option>
+      <option>Zion National Park</option>
+    </datalist>
+  </div>
+  <br>
+  <div>
+    <label for="date">Dates:</label>
+    <input type="text" id="date" placeholder="MM/DD/YYYY - MM/DD/YYYY">
+  </div>
+  <br>
+  <div>
+    <label for="campers">Additional Camper's Username:</label>
+    <input list="campers-list" type="text" id="campers">
+    <datalist id="campers-list">
+      {{#each user}}
+      <option>{{this.name}}</option>
+      {{/each}}
+    </datalist>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add-btn">
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+  <br>
+  <div class="form-group supply-list">
+    <label for="exampleFormControlTextarea1">Backpack:</label>
+    <textarea class="form-control" id="items" rows="3"></textarea>
+  </div>
 
-    <a class="submit-trip" href="/dashboard"><button type="button" class="btn btn-outline-success">Submit</button></a>
-    <a class="cancel" href="/dashboard"><button type="button" class="btn btn-outline-success">Cancel</button></a>
+  <a class="submit-trip" href="/dashboard"><button type="button" class="btn btn-outline-success">Submit</button></a>
+  <a class="cancel" href="/dashboard"><button type="button" class="btn btn-outline-success">Cancel</button></a>
 </form>
 
-<div id="gradient"></div>
-
-<script>
-    var colors = new Array(
-  [62,35,255],
-  [60,255,60],
-  [255,35,98],
-  [45,175,230],
-  [255,0,255],
-  [255,128,0]);
-
-var step = 0;
-//color table indices for: 
-// current color left
-// next color left
-// current color right
-// next color right
-var colorIndices = [0,1,2,3];
-
-//transition speed
-var gradientSpeed = 0.002;
-
-function updateGradient()
-{
-  
-  if ( $===undefined ) return;
-  
-var c0_0 = colors[colorIndices[0]];
-var c0_1 = colors[colorIndices[1]];
-var c1_0 = colors[colorIndices[2]];
-var c1_1 = colors[colorIndices[3]];
-
-var istep = 1 - step;
-var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-var color1 = "rgb("+r1+","+g1+","+b1+")";
-
-var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-var color2 = "rgb("+r2+","+g2+","+b2+")";
-
- $('#gradient').css({
-   background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
-    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
-  
-  step += gradientSpeed;
-  if ( step >= 1 )
-  {
-    step %= 1;
-    colorIndices[0] = colorIndices[1];
-    colorIndices[2] = colorIndices[3];
-    
-    //pick two new target color indices
-    //do not pick the same as the current one
-    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    
-  }
-}
-
-setInterval(updateGradient,10);
-</script>
+<div class="area">
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>

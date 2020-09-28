@@ -1,11 +1,15 @@
 var db = require("../models");
 var passport = require("../config/passport");
+var sgMail = require("../config/sendgrid");
 
-module.exports = function(app) {
+module.exports = function (app) {
+
+    var userEmail = "";
+    var username = "";
 
     //API ROUTES TO RENDER ON DASHBOARD
-    app.get("/dashboard", function(req, res) {
-        db.Adventure.all(function(data) {
+    app.get("/dashboard", function (req, res) {
+        db.Adventure.all(function (data) {
             var handleBarsObject = {
                 adventures: data
             };
@@ -33,11 +37,12 @@ module.exports = function(app) {
     //         console.log("error in routes file");
     //     });
     // });
+
     //API ROUTE TO SAVE ALL PARK INFO
 
-   //SIGNUP/LOGIN/LOGOUT ROUTES
+    //SIGNUP/LOGIN/LOGOUT ROUTES
     app.post("/api/signup", function (req, res) {
-        
+
         db.User.create({
             name: req.body.name,
             number: req.body.number,
@@ -45,7 +50,10 @@ module.exports = function(app) {
             password: req.body.password
         })
             .then(function () {
-                console.log("here");
+                console.log("here###########");
+                userEmail = req.body.email;
+                username = req.body.name;
+                sendSignupEmail(req.body.email)
                 res.redirect(307, "/api/login");
             })
             .catch(function (err) {
@@ -81,22 +89,22 @@ module.exports = function(app) {
     // Route for getting some data about our user to be used client side
 
     //REVIEW API ROUTES
-    app.put("/api/review/:id", function(req, res) {
+    app.put("/api/review/:id", function (req, res) {
 
         // console.log(req);
         // console.log(req.body);
         db.Adventure.update(
             { review: req.body.review },
             { where: { id: req.body.id } }
-            
-        //     {
-        //     review: req.body.review,
-        // },
-        //    {
-        //     where: {
-        //         id: req.body.id
-        //     }
-        ).then(function(result) {
+
+            //     {
+            //     review: req.body.review,
+            // },
+            //    {
+            //     where: {
+            //         id: req.body.id
+            //     }
+        ).then(function (result) {
             if (result.changedRows == 0) {
                 console.log("no changes made");
                 return res.status(404).end();
@@ -110,7 +118,7 @@ module.exports = function(app) {
 
 
     //ADVENTURE API ROUTES
-    app.post("/api/trips", function(req, res) {
+    app.post("/api/trips", function (req, res) {
         db.Adventure.create({
             title: req.body.title,
             date: req.body.date,
@@ -121,22 +129,23 @@ module.exports = function(app) {
             review: req.body.review,
             parkImgUrl: req.body.parkImgUrl,
             parkWebUrl: req.body.parkWebUrl
-        }).then(function() {
+        }).then(function () {
+            sendTripEmail(username, userEmail, req.body.title, req.body.date, req.body.location, req.body.campers, req.body.items, req.body.completed, req.body.review);
             console.log("saved trip");
-            res.redirect("/dashboard");
+
         }).catch(function (err) {
             console.log("error in routes file");
         });
     });
 
-    app.put("/api/trips/:id", function(req, res) {
+    app.put("/api/trips/:id", function (req, res) {
         db.Adventure.update({
             completed: req.body.completed
         }, {
             where: {
                 id: req.body.id
             }
-        }).then(function(result) {
+        }).then(function (result) {
             if (result.changedRows == 0) {
                 console.log("no changes made");
                 return res.status(404).end();
@@ -147,14 +156,96 @@ module.exports = function(app) {
         });
     });
 
-    app.delete("/api/trips/:id", function(req, res) {
+    app.delete("/api/trips/:id", function (req, res) {
         db.Adventure.destroy({
-          where: {
-            id: req.params.id
-          }
-        }).then(function(dbAdventure) {
-          res.json(dbAdventure);
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbAdventure) {
+            res.json(dbAdventure);
         });
     });
     //ADVENTURE API ROUTES
+}
+
+async function sendSignupEmail(email) {
+    var count = 1;
+    sgMail.setApiKey("");
+    const msg = {
+        to: email,
+        from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
+        templateId: ""
+    };
+    //ES6
+    if (count == 1) {
+        await sgMail
+            .send(msg)
+            .then(() => {
+                count++;
+            }, error => {
+                console.error(error);
+
+                if (error.response) {
+                    console.error(error.response.body)
+                }
+            });
+        //ES8
+        (async () => {
+            try {
+                await sgMail.send(msg);
+            } catch (error) {
+                console.error(error);
+
+                if (error.response) {
+                    console.error(error.response.body)
+                }
+            }
+        })();
+    }
+}
+
+
+async function sendTripEmail(username, userEmail, title, date, location, campers, items, completed, review) {
+
+    await sgMail.setApiKey("");
+    const msg = {
+        to: userEmail,
+        from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
+        templateId: "",
+        dynamic_template_data: {
+            name: username,
+            title: title,
+            date: date,
+            location: location,
+            campers: campers,
+            items: items,
+            completed: completed,
+            review: review
+        }
+    }
+
+    //ES6
+    sgMail
+        .send(msg)
+        .then(() => {
+            console.log("Trip email sent***");
+        }, error => {
+            console.error(error);
+
+            if (error.response) {
+                console.error(error.response.body)
+            }
+        });
+    //ES8
+    (async () => {
+        try {
+            await sgMail.send(msg);
+        } catch (error) {
+            console.error(error);
+
+            if (error.response) {
+                console.error(error.response.body)
+            }
+        }
+    })();
 }

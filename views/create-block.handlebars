@@ -65,10 +65,6 @@
         <label for="campers">Additional Camper's Username:</label>
         <input list="campers-list" type="text" id="campers">
         <datalist id="campers-list">
-            {{!-- <option>Juliana</option>
-            <option>Corey</option>
-            <option>Armando</option>
-            <option>Damini</option> --}}
             {{#each user}}
                 <option>{{this.name}}</option>
             {{/each}}

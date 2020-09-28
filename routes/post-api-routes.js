@@ -17,7 +17,6 @@ module.exports = function(app) {
 
     //API ROUTE TO SAVE ALL PARK INFO
     app.post("/api/parks", function(req, res) {
-        console.log("I made it to 20");
         console.log(req.body);
         db.Nationalpark.create({
             parkcode: req.body.parkcode,

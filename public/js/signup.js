@@ -1,41 +1,45 @@
-//Region Firebase setup
+// //Region Firebase setup
 
-// Initialize Firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyAwSYf_hueKmdVUBUaNwdf_jAyEYS7OODw",
-  authDomain: "pitch-it-firebase.firebaseapp.com",
-  databaseURL: "https://pitch-it-firebase.firebaseio.com",
-  projectId: "pitch-it-firebase",
-  storageBucket: "pitch-it-firebase.appspot.com",
-  messagingSenderId: "603643031651",
-  appId: "1:603643031651:web:807d273ed56cc196d98856",
-  measurementId: "G-T3G428HX8G"
-};
+// // Initialize Firebase
+// var firebaseConfig = {
+//   apiKey: "AIzaSyAwSYf_hueKmdVUBUaNwdf_jAyEYS7OODw",
+//   authDomain: "pitch-it-firebase.firebaseapp.com",
+//   databaseURL: "https://pitch-it-firebase.firebaseio.com",
+//   projectId: "pitch-it-firebase",
+//   storageBucket: "pitch-it-firebase.appspot.com",
+//   messagingSenderId: "603643031651",
+//   appId: "1:603643031651:web:807d273ed56cc196d98856",
+//   measurementId: "G-T3G428HX8G"
+// };
 
-//*Firebase Cloud storage setup*
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-var database = firebase.database();
-var messageRef = firebase.database().ref("messages")
+// //*Firebase Cloud storage setup*
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+// var database = firebase.database();
+// var messageRef = firebase.database().ref("messages")
 
-//End region
+// //End region
 
 
 const anim = $("#anim");
 anim.toggleClass("hideForm");
-
+$("#formcontainer").toggleClass("hideForm");
 $(document).ready(function () {
 
   window.addEventListener("load", function () {
     init();
   });
 
+  // function animation() {
+  //   setTimeout(function () {
+  //     $(".day").fadeOut(1000);
+  //   }, 500);
+  // };
+
   function init() {
-    $("#formcontainer").toggleClass("hideForm");
     setTimeout(function () {
-      $("#formcontainer").fadeIn(1500);
-      $(".day").toggleClass("hideForm")
-    }, 2000);
+      $("#formcontainer").fadeIn(1000);
+    }, 250);
   };
 
   // Getting references to our form and input
@@ -60,7 +64,7 @@ $(document).ready(function () {
       return;
     }
 
-    sendUserDataToFirebase(userData.name, userData.number, userData.email, userData.password);
+    // sendUserDataToFirebase(userData.name, userData.number, userData.email, userData.password);
 
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.name, userData.number, userData.email, userData.password);
@@ -97,12 +101,12 @@ $(document).ready(function () {
   }
 });
 
-function sendUserDataToFirebase(name, number, email, password) {
-  //save messages to firebase
-  database.ref('/users/' + name).set({
-    name: name,
-    number: number,
-    email: email,
-    password: password
-  });
-}
+// function sendUserDataToFirebase(name, number, email, password) {
+//   //save messages to firebase
+//   database.ref('/users/' + name).set({
+//     name: name,
+//     number: number,
+//     email: email,
+//     password: password
+//   });
+// }

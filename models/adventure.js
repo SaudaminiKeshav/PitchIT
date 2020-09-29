@@ -37,6 +37,16 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: true,
         len: [1]
+      },
+      parkImgUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        len: [1]
+      },
+      parkWebUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        len: [1]
       }
     });
   

@@ -126,7 +126,9 @@ module.exports = function (app) {
             campers: req.body.campers,
             items: req.body.items,
             completed: req.body.completed,
-            review: req.body.review
+            review: req.body.review,
+            parkImgUrl: req.body.parkImgUrl,
+            parkWebUrl: req.body.parkWebUrl
         }).then(function () {
             sendTripEmail(username, userEmail, req.body.title, req.body.date, req.body.location, req.body.campers, req.body.items, req.body.completed, req.body.review);
             console.log("saved trip");
@@ -218,7 +220,9 @@ async function sendTripEmail(username, userEmail, title, date, location, campers
             campers: campers,
             items: items,
             completed: completed,
-            review: review
+            review: review,
+            parkImgUrl: parkImgUrl,
+            parkWebUrl: parkWebUrl
         }
     }
 

@@ -6,11 +6,15 @@ $(function() {
       event.preventDefault();
     
       let newCamper = $("#campers").val().trim();
-      let li = $("<li>");
+      let li = $("<li class='friends'>");
 
-      li.text(newCamper);
-      $(".added-campers").append(li);
-      $("#campers").val("");
+      if (newCamper == "") {
+        return;
+      } else {
+        li.text(newCamper);
+        $(".added-campers").append(li);
+        $("#campers").val("");
+      }
   });
   
   
@@ -19,15 +23,37 @@ $(function() {
     console.log("clicked submit trip");
     event.preventDefault();
 
+    var list = [];
+
+    $(".friends").each(function() {
+      list.push($(this).text());
+    });
+
+    console.log(list);
+
+    var imgUrl;
+    var parkUrl;
+    var option = $("option");
+
+    for (var i = 0; i < option.length; i++) {
+      if (option[i].value == $("#location").val().trim()) {
+        console.log("got it!");
+        imgUrl = option[i].dataset.image;
+        parkUrl = option[i].dataset.url;
+      }
+    }
+
     // Values to create a new trip
     var newTrip = {
       title: $("#title").val().trim(),
       date: $("#date").val().trim(),
       location: $("#location").val().trim(),
-      campers: $("#campers").val().trim(),
+      campers: list.join(",\n"),
       items: $("#items").val(),
       completed: 0,
-      review: ""
+      review: "",
+      parkImgUrl: imgUrl,
+      parkWebUrl: parkUrl
     };
 
     // Post new trip

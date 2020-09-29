@@ -220,9 +220,7 @@ async function sendTripEmail(username, userEmail, title, date, location, campers
             campers: campers,
             items: items,
             completed: completed,
-            review: review,
-            parkImgUrl: parkImgUrl,
-            parkWebUrl: parkWebUrl
+            review: review
         }
     }
 

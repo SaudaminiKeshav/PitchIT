@@ -269,6 +269,10 @@ img{
     margin-top: 15%;
 }
 
+#park-img {
+    border-radius: 8px;
+}
+
 /* >>> Footer <<< */
 #footer {
     padding-top: 30px;
@@ -318,11 +322,6 @@ img{
 #campers {
     width: 80%;
     margin-right: 20px;
-}
-
-.added-campers {
-    list-style: none;
-    padding: 10px;
 }
 
 .submit-camp-btn {

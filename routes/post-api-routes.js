@@ -1,7 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
-var sgMail = require("../config/sendgrid");
-
+var nodemailer = require("../config/transporter");
 module.exports = function (app) {
 
     var userEmail = "";
@@ -167,83 +166,80 @@ module.exports = function (app) {
 }
 
 async function sendSignupEmail(email) {
-    var count = 1;
-    sgMail.setApiKey("");
-    const msg = {
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        port: 465,
+        auth: {
+            user: 'pitch.it.devs@gmail.com',
+            pass: 'TestPassword123'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let mailOptions = {
+        from: 'pitch.it.devs@gmail.com',
         to: email,
-        from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
-        templateId: ""
+        subject: "test",
+        html: `
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+        <br><h2>Welcome to the Pitch It!</h2><br>
+        <h2>You've found a community of travelers that are just like you.</h2>
+        <h2>We don't want to be stuck in tourist traps that isolate us from vibrant, local experiences. We want to discover the hidden gems and less-traveled roads of our next destination.</h2>
+        <h2>Ready for your next authentic travel experience?</h2>
+        `
     };
-    //ES6
-    if (count == 1) {
-        await sgMail
-            .send(msg)
-            .then(() => {
-                count++;
-            }, error => {
-                console.error(error);
 
-                if (error.response) {
-                    console.error(error.response.body)
-                }
-            });
-        //ES8
-        (async () => {
-            try {
-                await sgMail.send(msg);
-            } catch (error) {
-                console.error(error);
-
-                if (error.response) {
-                    console.error(error.response.body)
-                }
-            }
-        })();
-    }
+    transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("email sent");
+        }
+    })
 }
 
 
 async function sendTripEmail(username, userEmail, title, date, location, campers, items, completed, review) {
 
-    await sgMail.setApiKey("");
-    const msg = {
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        port: 465,
+        auth: {
+            user: 'pitch.it.devs@gmail.com',
+            pass: 'TestPassword123'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let mailOptions = {
+        from: 'pitch.it.devs@gmail.com',
         to: userEmail,
-        from: 'pitch.it.devs@gmail.com', // Use the email address or domain you verified above
-        templateId: "",
-        dynamic_template_data: {
-            name: username,
-            title: title,
-            date: date,
-            location: location,
-            campers: campers,
-            items: items,
-            completed: completed,
-            review: review
+        subject: "test",
+        html: `
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+        <br><h2>Here is a summary of the trip you created!</h2><br>
+        <ul>
+        <li> <h2>Title: ${title}</h2></li>
+        <li> <h2>Date: ${date}</h2></li>
+        <li> <h2>Location: ${location}</h2></li>
+        <li> <h2>Campers: ${campers}</h2></li>
+        <li><h2> Items: ${items}</h2></li>
+        <li><h2> Completed: ${completed}</h2></li>
+        <li> <h2>Review: ${review}</h2></li>
+        </ul>
+        `
+    };
+
+    transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("email sent");
         }
-    }
-
-    //ES6
-    sgMail
-        .send(msg)
-        .then(() => {
-            console.log("Trip email sent***");
-        }, error => {
-            console.error(error);
-
-            if (error.response) {
-                console.error(error.response.body)
-            }
-        });
-    //ES8
-    (async () => {
-        try {
-            await sgMail.send(msg);
-        } catch (error) {
-            console.error(error);
-
-            if (error.response) {
-                console.error(error.response.body)
-            }
-        }
-    })();
+    })
 }

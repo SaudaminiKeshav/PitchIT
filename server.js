@@ -3,7 +3,7 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-var sgMail = require("@sendgrid/mail");
+var nodemailer = require('nodemailer');
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+var { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 var exphbs = require("express-handlebars");
 var Handlebars = require('handlebars');
 
@@ -33,11 +33,18 @@ app.use(passport.session());
 require("./routes/html-routes.js")(app);
 require("./routes/post-api-routes.js")(app);
 
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync({ force: true }).then(function () {
+  app.listen(PORT, function () {
     console.log("🌎 App listening on PORT " + PORT);
   });
 });
 
-app.use(sgMail.send);
-app.use(sgMail.setApiKey);
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'pitch.it.devs@gmail.com',
+    pass: 'TestPassword123'
+  }
+});
+
+app.use(transporter.sendMail);

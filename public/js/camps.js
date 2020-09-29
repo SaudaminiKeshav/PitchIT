@@ -1,3 +1,4 @@
+
 $(function() {
   
   //Event listener for add people button on create trip form

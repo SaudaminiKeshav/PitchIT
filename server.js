@@ -4,6 +4,7 @@ var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 var nodemailer = require('nodemailer');
+var compression = require('compression')
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
+app.use(compression())
 
 var { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 var exphbs = require("express-handlebars");

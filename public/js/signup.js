@@ -1,24 +1,24 @@
-// //Region Firebase setup
+//Region Firebase setup
 
-// // Initialize Firebase
-// var firebaseConfig = {
-//   apiKey: "AIzaSyAwSYf_hueKmdVUBUaNwdf_jAyEYS7OODw",
-//   authDomain: "pitch-it-firebase.firebaseapp.com",
-//   databaseURL: "https://pitch-it-firebase.firebaseio.com",
-//   projectId: "pitch-it-firebase",
-//   storageBucket: "pitch-it-firebase.appspot.com",
-//   messagingSenderId: "603643031651",
-//   appId: "1:603643031651:web:807d273ed56cc196d98856",
-//   measurementId: "G-T3G428HX8G"
-// };
+// Initialize Firebase
+var firebaseConfig = {
+  apiKey: "AIzaSyAwSYf_hueKmdVUBUaNwdf_jAyEYS7OODw",
+  authDomain: "pitch-it-firebase.firebaseapp.com",
+  databaseURL: "https://pitch-it-firebase.firebaseio.com",
+  projectId: "pitch-it-firebase",
+  storageBucket: "pitch-it-firebase.appspot.com",
+  messagingSenderId: "603643031651",
+  appId: "1:603643031651:web:807d273ed56cc196d98856",
+  measurementId: "G-T3G428HX8G"
+};
 
-// //*Firebase Cloud storage setup*
-// firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
-// var database = firebase.database();
-// var messageRef = firebase.database().ref("messages")
+//*Firebase Cloud storage setup*
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var database = firebase.database();
+var messageRef = firebase.database().ref("messages")
 
-// //End region
+//End region
 
 
 const anim = $("#anim");
